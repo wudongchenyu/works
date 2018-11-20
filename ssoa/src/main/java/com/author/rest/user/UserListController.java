@@ -1,8 +1,7 @@
-package com.author.rest;
+package com.author.rest.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,28 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.alibaba.fastjson.JSON;
-import com.author.po.Authority;
-import com.author.service.AuthorityService;
-import com.author.util.Result;
-import com.author.util.ResultEnum;
-import com.author.util.ResultUtils;
-import com.mysql.cj.util.StringUtils;
-
-@WebServlet("/authority")
-public class AuthorityController extends HttpServlet {
-	
-	private AuthorityService authorityService = AuthorityService.getInstance();
+@WebServlet("/user/list")
+public class UserListController extends HttpServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5532126198274241253L;
+	private static final long serialVersionUID = -1660080130572297770L;
 
 	/**
 		 * Constructor of the object.
 		 */
-	public AuthorityController() {
+	public UserListController() {
 		super();
 	}
 
@@ -54,7 +43,20 @@ public class AuthorityController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.doPost(request, response);
+
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+		out.println("<HTML>");
+		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
+		out.println("  <BODY>");
+		out.print("    This is ");
+		out.print(this.getClass());
+		out.println(", using the GET method");
+		out.println("  </BODY>");
+		out.println("</HTML>");
+		out.flush();
+		out.close();
 	}
 
 	/**
@@ -69,26 +71,19 @@ public class AuthorityController extends HttpServlet {
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("调用doPost");
-		
-		String userId = request.getParameter("userId");
-		
-		response.setContentType("application/json;charset=UTF-8");
-	    response.setCharacterEncoding("UTF-8");
-	    PrintWriter out = response.getWriter();
-	    
-		if (StringUtils.isEmptyOrWhitespaceOnly(userId)) {
-			out.println(ResultUtils.error(ResultEnum.USERID_NULL_ERROR));
-		    out.flush();
-		    out.close();
-		    return;
-		}
-		
-		Result<List<Authority>> result = authorityService.getAllAuthority(userId);
-		
-	    out.println(JSON.toJSON(result).toString());
-	    out.flush();
-	    out.close();
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+		out.println("<HTML>");
+		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
+		out.println("  <BODY>");
+		out.print("    This is ");
+		out.print(this.getClass());
+		out.println(", using the POST method");
+		out.println("  </BODY>");
+		out.println("</HTML>");
+		out.flush();
+		out.close();
 	}
 
 	/**
