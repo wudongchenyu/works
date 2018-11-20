@@ -1,0 +1,43 @@
+@charset "UTF-8";
+body {
+	background-color: #e2e2e2;
+}
+.alldiv {
+  height: 100%;
+}
+.left {
+    height: 93%;
+    width: 16%;
+    float:left;
+    background-color: #e2e2e2;
+}
+.top {
+	background-color: #e2e2e2;
+	height: 7%;
+	font-size: 26px;
+    font-family: "隶书";
+	color: #4a4a4a;
+	text-align: left;
+}
+.top span {
+	padding-left: 20px;
+}
+.right {
+   height: 93%; 
+   width: 80%;
+   padding-left: 2%;
+   float:left;
+}
+
+ul li {
+    font-size: 24px;
+    font-family: "隶书";
+    font-weight: bold;
+    text-align:left;
+    height: 38px;
+    line-height: 38px;
+    color: #4a4a4a;
+}
+.disdiv {
+	display: none;
+}

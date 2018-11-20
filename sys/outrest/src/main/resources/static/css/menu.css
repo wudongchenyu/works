@@ -1,0 +1,27 @@
+@charset "UTF-8";
+.alldiv {
+  height: 100%;
+}
+.left {
+    height: 100%;
+    width: 16%;
+    float:left;
+}
+.right {
+   height: 100%; 
+   width: 80%;
+   padding-left: 2%;
+   float:left;
+}
+
+ul li {
+    font-size: 24px;
+    font-family: "隶书";
+    font-weight: bold;
+    text-align:left;
+    height: 38px;
+    line-height: 38px;
+}
+.disdiv {
+	display: none;
+}

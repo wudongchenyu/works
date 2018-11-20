@@ -1,0 +1,166 @@
+/*
+ * Copyright 2002-2017 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.springframework.http;
+
+import org.springframework.lang.Nullable;
+
+/**
+ * Enumeration of HTTP status codes.
+ *
+ * <p>The HTTP status code series can be retrieved via {@link #series()}.
+ *
+ * @author Arjen Poutsma
+ * @author Sebastien Deleuze
+ * @author Brian Clozel
+ * @since 3.0
+ * @see HttpStatus.Series
+ * @see <a href="http://www.iana.org/assignments/http-status-codes">HTTP Status Code Registry</a>
+ * @see <a href="http://en.wikipedia.org/wiki/List_of_HTTP_status_codes">List of HTTP status codes - Wikipedia</a>
+ */
+public enum HttpStatus {
+
+	CONTINUE(100, "继续"),
+
+	SWITCHING_PROTOCOLS(101, "交换协议"),
+
+	PROCESSING(102, "处理"),
+
+	CHECKPOINT(103, "检查点"),
+
+	OK(200, "成功"),
+
+	CREATED(201, "创建"),
+
+	ACCEPTED(202, "认可的"),
+
+	NON_AUTHORITATIVE_INFORMATION(203, "非授权信息"),
+
+	NO_CONTENT(204, "无内容"),
+
+	RESET_CONTENT(205, "重置内容"),
+
+	PARTIAL_CONTENT(206, "部分内容"),
+
+	MULTI_STATUS(207, "多状态"),
+
+	ALREADY_REPORTED(208, "已经报道"),
+
+	IM_USED(226, "我用过"),
+
+	MULTIPLE_CHOICES(300, "多种选择"),
+
+	MOVED_PERMANENTLY(301, "永久移除"),
+
+	FOUND(302, "发现"),
+
+	MOVED_TEMPORARILY(302, "临时搬家"),
+
+	SEE_OTHER(303, "看到其他"),
+
+	NOT_MODIFIED(304, "未修改"),
+
+	USE_PROXY(305, "使用代理"),
+
+	TEMPORARY_REDIRECT(307, "暂时重定向"),
+
+	PERMANENT_REDIRECT(308, "永久重定向"),
+
+	BAD_REQUEST(400, "不良要求"),
+
+	UNAUTHORIZED(401, "未经授权的"),
+
+	PAYMENT_REQUIRED(402, "要求付款"),
+
+	FORBIDDEN(403, "被禁止的"),
+
+	NOT_FOUND(404, "找不到"),
+
+	METHOD_NOT_ALLOWED(405, "方法不允许"),
+
+	NOT_ACCEPTABLE(406, "不可接受"),
+
+	PROXY_AUTHENTICATION_REQUIRED(407, "需要代理身份验证"),
+
+	REQUEST_TIMEOUT(408, "请求超时"),
+
+	CONFLICT(409, "冲突"),
+
+	GONE(410, "跑了"),
+
+	LENGTH_REQUIRED(411, "长度要求"),
+
+	PRECONDITION_FAILED(412, "先决条件失败"),
+
+	PAYLOAD_TOO_LARGE(413, "有效载荷过大"),
+
+	REQUEST_ENTITY_TOO_LARGE(413, "请求实体过大"),
+
+	URI_TOO_LONG(414, "太长了"),
+
+	REQUEST_URI_TOO_LONG(414, "请求URI太长"),
+
+	UNSUPPORTED_MEDIA_TYPE(415, "不支持的媒体类型"),
+
+	REQUESTED_RANGE_NOT_SATISFIABLE(416, "请求范围不符合要求"),
+
+	EXPECTATION_FAILED(417, "期望失败"),
+
+	I_AM_A_TEAPOT(418, "我是茶壶"),
+
+	INSUFFICIENT_SPACE_ON_RESOURCE(419, "资源空间不足"),
+
+	METHOD_FAILURE(420, "方法失效"),
+
+	DESTINATION_LOCKED(421, "目的地锁定"),
+
+	UNPROCESSABLE_ENTITY(422, "无法处理的实体"),
+
+	LOCKED(423, "锁定的"),
+
+	FAILED_DEPENDENCY(424, "依赖失败"),
+
+	UPGRADE_REQUIRED(426, "需要升级"),
+
+	PRECONDITION_REQUIRED(428, "要求先决条件"),
+
+	TOO_MANY_REQUESTS(429, "请求太多"),
+
+	REQUEST_HEADER_FIELDS_TOO_LARGE(431, "请求头字段太大"),
+
+	UNAVAILABLE_FOR_LEGAL_REASONS(451, "因法律原因无法获得"),
+
+	INTERNAL_SERVER_ERROR(500, "内部服务器错误"),
+
+	NOT_IMPLEMENTED(501, "未实施"),
+
+	BAD_GATEWAY(502, "坏网关"),
+
+	SERVICE_UNAVAILABLE(503, "服务不可用"),
+
+	GATEWAY_TIMEOUT(504, "网关超时"),
+
+	HTTP_VERSION_NOT_SUPPORTED(505, "版本未被支持"),
+
+	VARIANT_ALSO_NEGOTIATES(506, "变型也谈判"),
+
+	INSUFFICIENT_STORAGE(507, "存储不足"),
+
+	LOOP_DETECTED(508, "回路检测"),
+
+	BANDWIDTH_LIMIT_EXCEEDED(509, "超出带宽限制"),
+
+	NOT_EXTENDED(510, "未扩展"),
