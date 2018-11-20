@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.author.service.UserService;
+
 @WebServlet("/user/delete")
 public class UserDeleteController extends HttpServlet {
+	
+	private UserService userService = UserService.getInstance();
 
 	/**
 	 * 

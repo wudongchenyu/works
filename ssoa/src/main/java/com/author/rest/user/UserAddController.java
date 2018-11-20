@@ -2,6 +2,7 @@ package com.author.rest.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,8 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+import com.author.po.Authority;
+import com.author.po.User;
+import com.author.service.UserService;
+import com.author.util.Result;
+import com.author.util.ResultEnum;
+import com.author.util.ResultUtils;
+import com.mysql.cj.util.StringUtils;
+
 @WebServlet("/user/add")
 public class UserAddController extends HttpServlet {
+	
+	private UserService userService = UserService.getInstance();
 
 	/**
 	 * 
@@ -43,20 +55,7 @@ public class UserAddController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		this.doPost(request, response);
 	}
 
 	/**
@@ -71,19 +70,36 @@ public class UserAddController extends HttpServlet {
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		System.out.println("调用doPost");
+		
+		String userName = request.getParameter("userName");
+		String name = request.getParameter("name");
+		String pass = request.getParameter("pass");
+		String tele = request.getParameter("tele");
+		String coi = request.getParameter("coi");
+		response.setContentType("application/json;charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+	    
+		if (StringUtils.isEmptyOrWhitespaceOnly(userName)) {
+			out.println(ResultUtils.error(ResultEnum.USERNAME_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(pass)) {
+			out.println(ResultUtils.error(ResultEnum.PASSWORD_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		Result<User> result = userService.add(userName, pass, tele, coi, name);
+		
+	    out.println(JSON.toJSON(result).toString());
+	    out.flush();
+	    out.close();
 	}
 
 	/**

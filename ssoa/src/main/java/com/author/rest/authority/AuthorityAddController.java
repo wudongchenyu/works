@@ -28,8 +28,7 @@ public class AuthorityAddController extends HttpServlet {
 		 * Destruction of the servlet. <br>
 		 */
 	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
+		super.destroy();
 	}
 
 	/**

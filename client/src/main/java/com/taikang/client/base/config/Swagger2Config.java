@@ -24,8 +24,6 @@ public class Swagger2Config {
 	public @Bean Docket createRestApi() {
 		
 		List<Parameter> pars = new ArrayList<Parameter>();  
-		
-        
 		Parameter parameter = new ParameterBuilder()
 			.name("Access-Token")
 			.description("token /api/* 开头的接口必传")

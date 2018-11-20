@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import com.alibaba.fastjson.annotation.JSONField;
+import com.author.util.SystemGeneration;
 
 import jdk.jfr.Description;
 import lombok.Data;
@@ -16,7 +17,7 @@ public class User implements Serializable{
 	private String id;
 	
 	@Description(value = "编号")
-	private String userCode;
+	private String userCode = SystemGeneration.getTimeNumber("U");
 	
 	@Description(value = "用户账号")
 	private String userName;
@@ -35,18 +36,18 @@ public class User implements Serializable{
 
 	@Description(value = "创建时间")
 	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
-	private Date createTime;
+	private Date createTime = new Date();
 	
 	@Description(value = "用户是否过期")
-	private boolean accountNonExpired;
+	private boolean accountNonExpired = true;
 	
 	@Description(value = "是否被锁定")
-	private boolean accountNonLocked;
+	private boolean accountNonLocked = true;
 	
 	@Description(value = "授权是否过期")
-	private boolean credentialsNonExpired;
+	private boolean credentialsNonExpired  = true;
 	
 	@Description(value = "是否禁用")
-	private boolean enabled;
+	private boolean enabled  = true;
 
 }
