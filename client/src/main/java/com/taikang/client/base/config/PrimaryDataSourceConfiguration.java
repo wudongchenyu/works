@@ -8,7 +8,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
 import org.springframework.boot.autoconfigure.orm.jpa.JpaProperties;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.context.annotation.Bean;
@@ -55,7 +54,7 @@ public class PrimaryDataSourceConfiguration {
 	}
 
 	private Map<String, ?> getVendorPrpperties() {
-		return jpaProperties.getHibernateProperties(new HibernateSettings());
+		return jpaProperties.getProperties();
 	}
 
 }

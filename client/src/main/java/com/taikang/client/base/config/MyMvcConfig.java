@@ -28,7 +28,7 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import com.taikang.client.base.interceptor.SsoHandlerInterceptor;
 
 @Configuration//这是Java配置类
-@ComponentScan(basePackages = {"com.taikang.sso.base.rest"})//扫描com包
+@ComponentScan(basePackages = {"com.taikang.client.base.rest"})//扫描com包
 public class MyMvcConfig implements WebMvcConfigurer{
 	
 	@Override
