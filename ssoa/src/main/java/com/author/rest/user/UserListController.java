@@ -2,6 +2,7 @@ package com.author.rest.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
+import com.author.po.User;
 import com.author.service.UserService;
+import com.author.util.Result;
 
 @WebServlet("/user/list")
 public class UserListController extends HttpServlet {
@@ -32,8 +36,7 @@ public class UserListController extends HttpServlet {
 		 * Destruction of the servlet. <br>
 		 */
 	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
+		super.destroy();
 	}
 
 	/**
@@ -47,20 +50,7 @@ public class UserListController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the GET method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		this.doPost(request, response);
 	}
 
 	/**
@@ -74,20 +64,22 @@ public class UserListController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
-		out.println("<HTML>");
-		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
-		out.println("  <BODY>");
-		out.print("    This is ");
-		out.print(this.getClass());
-		out.println(", using the POST method");
-		out.println("  </BODY>");
-		out.println("</HTML>");
-		out.flush();
-		out.close();
+		System.out.println("调用doPost");
+		
+		String id = request.getParameter("id");
+		String user_code = request.getParameter("user_code");
+		String user_name = request.getParameter("user_name");
+		String tele = request.getParameter("tele");
+		String coi = request.getParameter("coi");
+		response.setContentType("application/json;charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+		
+		Result<List<User>> result = userService.list(id, user_code, user_name, tele, coi);
+		
+	    out.println(JSON.toJSON(result).toString());
+	    out.flush();
+	    out.close();
 	}
 
 	/**

@@ -29,15 +29,17 @@ public class AuthorityService {
 	}
 
 	public Result<List<Authority>> getAllAuthority(String userId) {
-		List<Authority> list = new ArrayList<Authority>();
+		DruidPooledConnection connection = null;
+		PreparedStatement statement = null;
 		try {
-			DruidPooledConnection connection = DataSourceUtils.openConnection();
+			connection = DataSourceUtils.openConnection();
 			connection.setAutoCommit(false);
-			PreparedStatement statement = connection.prepareStatement("select sa.id,sa.authority_name,sa.authority_code,sa.subordinate,sa.authority_url,"
+			statement = connection.prepareStatement("select sa.id,sa.authority_name,sa.authority_code,sa.subordinate,sa.authority_url,"
 					+ "sa.enabled,sa.create_time from  sso_user_authorty sua left join sso_authority sa on sa.id=sua.authorty_id"
 					+ " where sa.enabled = 1 and sua.user_id=?");
 			statement.setString(1, userId);
 			ResultSet rs = statement.executeQuery();
+			List<Authority> list = new ArrayList<Authority>();
 			if (rs.next()) {
 				Authority authority = new Authority();
 				authority.setId(rs.getString("id"));
@@ -49,12 +51,18 @@ public class AuthorityService {
 				authority.setSubordinate(rs.getString("subordinate"));
 				list.add(authority);
 			}
-			statement.close();
-			connection.close();
+			return ResultUtils.success(ResultEnum.SEARCH_AUTHORTY_SUCCESS, list);
 		} catch (SQLException e) {
 			return ResultUtils.error(ResultEnum.SEARCH_AUTHORTY_ERROR);
+		}finally {
+			try {
+				statement.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		return ResultUtils.success(ResultEnum.SEARCH_AUTHORTY_SUCCESS, list);
+		
 	}
 	
 }

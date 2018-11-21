@@ -2,7 +2,6 @@ package com.author.rest.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
-import com.author.po.Authority;
 import com.author.po.User;
 import com.author.service.UserService;
 import com.author.util.Result;
