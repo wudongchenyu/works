@@ -54,7 +54,23 @@ public class AuthorityController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.doPost(request, response);
+		System.out.println("调用doGet");
+		
+		String userId = request.getParameter("userId");
+		String id = request.getParameter("id");
+		String authorityCode = request.getParameter("authorityCode");
+		String authorityName = request.getParameter("authorityName");
+		String enabled = request.getParameter("enabled");
+		
+		response.setContentType("application/json;charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+		
+		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityCode, authorityName, enabled);
+		
+	    out.println(JSON.toJSON(result).toString());
+	    out.flush();
+	    out.close();
 	}
 
 	/**
@@ -71,20 +87,105 @@ public class AuthorityController extends HttpServlet {
 
 		System.out.println("调用doPost");
 		
-		String userId = request.getParameter("userId");
+		String authorityName = request.getParameter("authority_name");
+		String subordinate = request.getParameter("subordinate");
+		String authorityUrl = request.getParameter("authority_url");
 		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
 	    
-		if (StringUtils.isEmptyOrWhitespaceOnly(userId)) {
+		if (StringUtils.isEmptyOrWhitespaceOnly(authorityName)) {
+			out.println(ResultUtils.error(ResultEnum.AUTHORITYNAME_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(subordinate)) {
+			out.println(ResultUtils.error(ResultEnum.SUBORDINATE_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(authorityUrl)) {
+			out.println(ResultUtils.error(ResultEnum.AUTHORITYURL_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		Result<Authority> result = authorityService.addAuthority(authorityName, subordinate, authorityUrl);
+		
+	    out.println(JSON.toJSON(result).toString());
+	    out.flush();
+	    out.close();
+	}
+	
+	public void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("调用doPut");
+		
+		String id = request.getParameter("id");
+		String authorityName = request.getParameter("authority_name");
+		String subordinate = request.getParameter("subordinate");
+		String authorityUrl = request.getParameter("authority_url");
+		
+		response.setContentType("application/json;charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+	    
+	    if (StringUtils.isEmptyOrWhitespaceOnly(id)) {
+			out.println(ResultUtils.error(ResultEnum.AUTHORITYID_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+	    
+		if (StringUtils.isEmptyOrWhitespaceOnly(authorityName)) {
+			out.println(ResultUtils.error(ResultEnum.AUTHORITYNAME_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(subordinate)) {
+			out.println(ResultUtils.error(ResultEnum.SUBORDINATE_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(authorityUrl)) {
+			out.println(ResultUtils.error(ResultEnum.AUTHORITYURL_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		Result<Authority> result = authorityService.editAuthority(id, authorityName, subordinate, authorityUrl);
+		
+	    out.println(JSON.toJSON(result).toString());
+	    out.flush();
+	    out.close();
+	}
+	
+	public void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("调用doDelete");
+		
+		String id = request.getParameter("id");
+		response.setContentType("application/json;charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+	    
+		if (StringUtils.isEmptyOrWhitespaceOnly(id)) {
 			out.println(ResultUtils.error(ResultEnum.USERID_NULL_ERROR));
 		    out.flush();
 		    out.close();
 		    return;
 		}
 		
-		Result<List<Authority>> result = authorityService.getAllAuthority(userId);
+		Result<String> result = authorityService.delete(id);
 		
 	    out.println(JSON.toJSON(result).toString());
 	    out.flush();

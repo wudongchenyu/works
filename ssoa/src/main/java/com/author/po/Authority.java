@@ -37,7 +37,4 @@ public class Authority implements Serializable{
 	@Description(value = "是否禁用")
 	private boolean enabled;
 	
-	@Description(value = "是否是菜单")
-	private boolean isMenu;
-
 }
