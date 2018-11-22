@@ -35,7 +35,6 @@ public class AuthorityService {
 		PreparedStatement statement = null;
 		try {
 			connection = DataSourceUtils.openConnection();
-			connection.setAutoCommit(false);
 			
 			StringBuffer sqlBuffer = new StringBuffer("select sa.id,sa.authority_name,sa.authority_code,"
 					+ "sa.subordinate,sa.authority_url,sa.enabled,sa.create_time from  sso_user_authorty "
@@ -124,6 +123,8 @@ public class AuthorityService {
 			statement.setBoolean(6, authority.isEnabled());
 			statement.setDate(7, (Date) authority.getCreateTime());
 			int updateCount = statement.executeUpdate();
+			connection.commit();
+			connection.setAutoCommit(true);
 			if (updateCount != 1) {
 				return ResultUtils.error(ResultEnum.SEARCH_AUTHORTY_ERROR);
 			}
@@ -188,6 +189,7 @@ public class AuthorityService {
 			statementUpdate.setString(params.size()+1, id);
 			statementUpdate.executeUpdate();
 			connection.commit();
+			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.EDIT_AUTHORTY_SUCCESS, authority);
 		} catch (SQLException e) {
 			return ResultUtils.error(ResultEnum.EDIT_AUTHORTY_ERROR);
@@ -212,6 +214,7 @@ public class AuthorityService {
 			statement.setString(1, id);
 			statement.executeUpdate();
 			connection.commit();
+			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.DELETE_AUTHORITY_SUCCESS, id);
 		} catch (Exception e) {
 			return ResultUtils.success(ResultEnum.DELETE_AUTHORITY_ERROR);

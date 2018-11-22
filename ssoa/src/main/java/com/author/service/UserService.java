@@ -64,6 +64,7 @@ public class UserService {
 			statement.setBoolean(12, user.isAccountNonExpired());
 			statement.executeUpdate();
 			connection.commit();
+			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.SAVE_USER_SUCCESS, user);
 		} catch (Exception e) {
 			return ResultUtils.success(ResultEnum.SAVE_USER_ERROR);
@@ -105,7 +106,6 @@ public class UserService {
 		PreparedStatement statement = null;
 		try {
 			connection = DataSourceUtils.openConnection();
-			connection.setAutoCommit(false);
 			statement = connection.prepareStatement("select id,name,user_code," + 
 					"user_name,tele,coi,enabled,credentials_non_expired,create_time,account_non_locked," + 
 					"account_non_expired from sso_user where id = ?");
@@ -147,7 +147,6 @@ public class UserService {
 					+ "enabled,credentials_non_expired,create_time,account_non_locked,account_non_expired from sso_user where enabled=1 ");
 			
 			connection = DataSourceUtils.openConnection();
-			connection.setAutoCommit(false);
 			List<Object> params = new ArrayList<Object>();
 			if (!StringUtils.isEmptyOrWhitespaceOnly(user_code)) {
 				sqlBuffer.append("and user_code = ?");
@@ -275,6 +274,7 @@ public class UserService {
 			statementUpdate.setString(params.size()+1, id);
 			statementUpdate.executeUpdate();
 			connection.commit();
+			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.EDIT_USER_SUCCESS);
 		} catch (Exception e) {
 			return ResultUtils.success(ResultEnum.EDIT_USER_ERROR);
@@ -282,6 +282,38 @@ public class UserService {
 			try {
 				statement.close();
 				statementUpdate.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public Result<String> privileges(String userId, List<String> list) {
+		
+		DruidPooledConnection connection = null;
+		PreparedStatement statement = null;
+		try {
+			
+			connection = DataSourceUtils.openConnection();
+			connection.setAutoCommit(false);
+			statement = connection.prepareStatement("insert into sso_user_authority(id,user_id,authorty_id) VALUES(?,?,?)");
+			
+			for (String authority : list) {
+				statement.setString(1, SystemGeneration.getUuidNumber(""));
+				statement.setString(2, userId);
+				statement.setString(3, authority);
+				statement.addBatch();
+			}
+			statement.executeBatch();
+			connection.commit();
+			connection.setAutoCommit(true);
+			return ResultUtils.success(ResultEnum.SAVE_USER_SUCCESS);
+		} catch (Exception e) {
+			return ResultUtils.success(ResultEnum.SAVE_USER_ERROR);
+		}finally {
+			try {
+				statement.close();
 				connection.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
