@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.mindrot.jbcrypt.BCrypt;
 
 import com.alibaba.druid.pool.DruidPooledConnection;
+import com.alibaba.fastjson.JSONObject;
 import com.author.po.User;
 import com.author.util.DataSourceUtils;
 import com.author.util.RedisUtils;
@@ -35,7 +36,7 @@ public class LoginService {
 		return loginService;
 	}
 	
-	public Result<String> login(String userName, String passWord, String ip) {
+	public Result<JSONObject> login(String userName, String passWord, String ip) {
 		if (StringUtils.isEmptyOrWhitespaceOnly(userName)) {
 			return ResultUtils.success(ResultEnum.USER_ADN_PASS_ERROR);
 		}
@@ -92,7 +93,9 @@ public class LoginService {
 		jedis.set(key, tokensBuffer.toString());
 		jedis.expire(key, 10*60);
 		jedis.close();
-		return ResultUtils.success(ResultEnum.GENERATE_TOKEN_SUCCESS, token);
+		JSONObject toJsonObject = new JSONObject();
+		toJsonObject.put("token", token);
+		return ResultUtils.success(ResultEnum.GENERATE_TOKEN_SUCCESS, toJsonObject);
 	}
 
 	public Result<String> logout(String token) {

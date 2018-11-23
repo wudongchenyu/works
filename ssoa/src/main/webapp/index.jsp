@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div>
 		<input type="text" id="userName" name="userName"><br>
 		<input type="password" id="passWord" name="passWord"><br>
-		<input type="hidden" id="fromUrl" name = "fromUrl" value="${fromUrl}"><br>
+		<input type="text" id="fromUrl" name = "fromUrl" value="${fromUrl}">
 		<button onclick="tj();">提交</button>
 	</div>
   </body>

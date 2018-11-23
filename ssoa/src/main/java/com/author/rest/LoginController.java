@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.author.service.LoginService;
 import com.author.util.Result;
 import com.author.util.ResultEnum;
@@ -70,10 +71,10 @@ public class LoginController extends HttpServlet {
 		
 		String userName = request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
-		String ip = request.getParameter("ip");
+		String fromUrl = request.getParameter("fromUrl");
 		System.out.println("userName:" + userName);
 		System.out.println("passWord:" + passWord);
-		System.out.println("ip:" + ip);
+		System.out.println("ip:" + fromUrl);
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
@@ -90,7 +91,8 @@ public class LoginController extends HttpServlet {
 		    out.close();
 		    return;
 		}
-		Result<String> result = loginService.login(userName, passWord, ip);
+		Result<JSONObject> result = loginService.login(userName, passWord, fromUrl);
+		result.getData().put("fromUrl", fromUrl);
 	    out.println(JSON.toJSON(result).toString());
 	    out.flush();
 	    out.close();

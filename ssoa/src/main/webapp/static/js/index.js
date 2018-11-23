@@ -12,7 +12,7 @@ function tj(){
 		type:"POST",
 		dataType:"json",
 		success: function(result){
-			if(result.code=="110031" || result.code == 110031){
+			if(result.code=="100031" || result.code == 100031){
 				$('<div>')
 				.appendTo('body')
 				.addClass('alert alert-success')
@@ -20,6 +20,8 @@ function tj(){
 				.show()
 				.delay(1500)
 				.fadeOut();
+//				alert("result.data.fromUrl:" + result.data.fromUrl);
+				window.location.href=result.data.fromUrl;
 			}
 		}
 	});

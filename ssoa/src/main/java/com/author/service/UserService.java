@@ -67,6 +67,11 @@ public class UserService {
 			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.SAVE_USER_SUCCESS, user);
 		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return ResultUtils.success(ResultEnum.SAVE_USER_ERROR);
 		}finally {
 			try {
@@ -90,6 +95,11 @@ public class UserService {
 			connection.commit();
 			return ResultUtils.success(ResultEnum.DELETE_USER_SUCCESS, id);
 		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return ResultUtils.success(ResultEnum.DELETE_USER_ERROR);
 		}finally {
 			try {
@@ -277,6 +287,11 @@ public class UserService {
 			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.EDIT_USER_SUCCESS);
 		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return ResultUtils.success(ResultEnum.EDIT_USER_ERROR);
 		}finally {
 			try {
@@ -293,10 +308,15 @@ public class UserService {
 		
 		DruidPooledConnection connection = null;
 		PreparedStatement statement = null;
+		PreparedStatement deleteStatement = null;
 		try {
 			
 			connection = DataSourceUtils.openConnection();
 			connection.setAutoCommit(false);
+			deleteStatement = connection.prepareStatement("DELETE FROM sso_user_authority WHERE user_id=?");
+			deleteStatement.setString(1, userId);
+			deleteStatement.executeUpdate();
+			
 			statement = connection.prepareStatement("insert into sso_user_authority(id,user_id,authorty_id) VALUES(?,?,?)");
 			
 			for (String authority : list) {
@@ -310,9 +330,15 @@ public class UserService {
 			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.SAVE_USER_SUCCESS);
 		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return ResultUtils.success(ResultEnum.SAVE_USER_ERROR);
 		}finally {
 			try {
+				deleteStatement.close();
 				statement.close();
 				connection.close();
 			} catch (SQLException e) {

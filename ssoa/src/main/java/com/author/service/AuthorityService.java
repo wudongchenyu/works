@@ -130,6 +130,11 @@ public class AuthorityService {
 			}
 			return ResultUtils.success(ResultEnum.SEARCH_AUTHORTY_SUCCESS, authority);
 		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return ResultUtils.error(ResultEnum.SEARCH_AUTHORTY_ERROR);
 		}finally {
 			try {
@@ -192,6 +197,11 @@ public class AuthorityService {
 			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.EDIT_AUTHORTY_SUCCESS, authority);
 		} catch (SQLException e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return ResultUtils.error(ResultEnum.EDIT_AUTHORTY_ERROR);
 		}finally {
 			try {
@@ -217,6 +227,11 @@ public class AuthorityService {
 			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.DELETE_AUTHORITY_SUCCESS, id);
 		} catch (Exception e) {
+			try {
+				connection.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
 			return ResultUtils.success(ResultEnum.DELETE_AUTHORITY_ERROR);
 		}finally {
 			try {

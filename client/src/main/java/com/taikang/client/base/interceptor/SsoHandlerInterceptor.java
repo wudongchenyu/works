@@ -52,6 +52,7 @@ public class SsoHandlerInterceptor extends HandlerInterceptorAdapter{
 			}
 			
 		}
+		
 		if (isMatcher) {
 			String hostAddress = InetAddress.getLocalHost().getHostAddress();
 			System.out.println(InetAddress.getLocalHost().getHostAddress());
