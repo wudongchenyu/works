@@ -53,7 +53,36 @@ public class LoginController extends HttpServlet {
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("调用doGet");
-		this.doPost(request, response);
+		
+		String userName = request.getParameter("userName");
+		String passWord = request.getParameter("passWord");
+		String ip = request.getParameter("ip");
+		String remortAddress = request.getParameter("remortAddress");
+		System.out.println("userName:" + userName);
+		System.out.println("passWord:" + passWord);
+		System.out.println("ip:" + ip);
+		System.out.println("remortAddress:" + remortAddress);
+		response.setContentType("application/json;charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+		if (StringUtils.isEmptyOrWhitespaceOnly(userName)) {
+			out.println(ResultUtils.paramError(ResultEnum.USER_ADN_PASS_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(passWord)) {
+			out.println(ResultUtils.paramError(ResultEnum.USER_ADN_PASS_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		Result<JSONObject> result = loginService.login(userName, passWord, ip, remortAddress);
+		result.getData().put("ip", ip);
+	    out.println(JSON.toJSONString(result));
+	    out.flush();
+	    out.close();
 	}
 
 	/**
@@ -93,7 +122,7 @@ public class LoginController extends HttpServlet {
 		}
 		Result<JSONObject> result = loginService.login(userName, passWord, fromUrl);
 		result.getData().put("fromUrl", fromUrl);
-	    out.println(JSON.toJSON(result).toString());
+	    out.println(JSON.toJSONString(result));
 	    out.flush();
 	    out.close();
 	}

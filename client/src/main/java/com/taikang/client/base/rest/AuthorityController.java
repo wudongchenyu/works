@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/api/client/authority")
+@RequestMapping(path = "/api/client/authority", produces = "application/json;charset=UTF-8")
 @Api(tags = "权限信息相关API")
 public class AuthorityController {
 	

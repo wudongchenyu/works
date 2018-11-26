@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.alibaba.fastjson.JSON;
 import com.author.service.LoginService;
+import com.author.util.Result;
 import com.author.util.ResultEnum;
 import com.author.util.ResultUtils;
 import com.mysql.cj.util.StringUtils;
@@ -65,16 +67,19 @@ public class TokenController extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("调用doPost");
 		String token = request.getParameter("token");
-		response.setContentType("text/json;charset=UTF-8");
+		response.setContentType("application/json;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
-			out.println(ResultUtils.success(ResultEnum.CANCEL_TOKEN_ERROR));
+			out.println(ResultUtils.paramError(ResultEnum.CANCEL_TOKEN_ERROR));
 			out.flush();
 			out.close();
 			return;
 		}
-		out.println(loginService.checkToken(token));
+		
+		Result<String> result = loginService.checkToken(token);
+		
+		out.println(JSON.toJSONString(result));
 		out.flush();
 		out.close();
 	}

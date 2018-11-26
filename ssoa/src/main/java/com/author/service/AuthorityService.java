@@ -77,7 +77,7 @@ public class AuthorityService {
 			ResultSet rs = statement.executeQuery();
 			
 			List<Authority> list = new ArrayList<Authority>();
-			if (rs.next()) {
+			while (rs.next()) {
 				Authority authority = new Authority();
 				authority.setId(rs.getString("id"));
 				authority.setCreateTime(rs.getDate("create_time"));
@@ -256,6 +256,44 @@ public class AuthorityService {
 			}
 			if (params.get(i) instanceof java.util.Date) {
 				statement.setDate(i+1, (Date) params.get(i));
+			}
+		}
+	}
+
+	public Result<Authority> detail(String id) {
+		DruidPooledConnection connection = null;
+		PreparedStatement statement = null;
+		try {
+			connection = DataSourceUtils.openConnection();
+			
+			StringBuffer sqlBuffer = new StringBuffer("select sa.id,sa.authority_name,sa.authority_code,"
+					+ "sa.subordinate,sa.authority_url,sa.enabled,sa.create_time from  sso_user_authorty "
+					+ " sua left join sso_authority sa on sa.id=sua.authorty_id where 1 = 1 and sa.id=?");
+			
+			statement = connection.prepareStatement(sqlBuffer.toString());
+			statement.setString(1, id);
+			ResultSet rs = statement.executeQuery();
+			
+			Authority authority = new Authority();
+			if (rs.next()) {
+				
+				authority.setId(rs.getString("id"));
+				authority.setCreateTime(rs.getDate("create_time"));
+				authority.setEnabled(rs.getBoolean("enabled"));
+				authority.setAuthorityCode(rs.getString("authority_code"));
+				authority.setAuthorityName(rs.getString("authority_name"));
+				authority.setAuthorityUrl(rs.getString("authority_url"));
+				authority.setSubordinate(rs.getString("subordinate"));
+			}
+			return ResultUtils.success(ResultEnum.SEARCH_AUTHORTY_SUCCESS, authority);
+		} catch (SQLException e) {
+			return ResultUtils.error(ResultEnum.SEARCH_AUTHORTY_ERROR);
+		}finally {
+			try {
+				statement.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
 		}
 	}

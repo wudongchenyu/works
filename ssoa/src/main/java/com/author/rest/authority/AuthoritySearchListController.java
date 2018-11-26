@@ -1,7 +1,8 @@
-package com.author.rest;
+package com.author.rest.authority;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,26 +11,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
-import com.author.service.LoginService;
+import com.author.po.Authority;
+import com.author.service.AuthorityService;
 import com.author.util.Result;
-import com.author.util.ResultEnum;
-import com.author.util.ResultUtils;
-import com.mysql.cj.util.StringUtils;
 
-@WebServlet("/logout")
-public class LogoutController extends HttpServlet {
+@WebServlet(value = "/basic/authority/searchList" ,name = "AuthoritySearchListController")
+public class AuthoritySearchListController extends HttpServlet {
 	
-	private LoginService loginService = LoginService.getInstance();
+	private AuthorityService authorityService = AuthorityService.getInstance();
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -784992149680060887L;
+	private static final long serialVersionUID = 5532126198274241253L;
 
 	/**
 		 * Constructor of the object.
 		 */
-	public LogoutController() {
+	public AuthoritySearchListController() {
 		super();
 	}
 
@@ -37,7 +36,8 @@ public class LogoutController extends HttpServlet {
 		 * Destruction of the servlet. <br>
 		 */
 	public void destroy() {
-		super.destroy(); 
+		super.destroy(); // Just puts "destroy" string in log
+		// Put your code here
 	}
 
 	/**
@@ -51,7 +51,23 @@ public class LogoutController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.doPost(request, response);
+		System.out.println("调用doGet");
+		
+		String userId = request.getParameter("userId");
+		String id = request.getParameter("id");
+		String authorityCode = request.getParameter("authorityCode");
+		String authorityName = request.getParameter("authorityName");
+		String enabled = request.getParameter("enabled");
+		
+		response.setContentType("application/json;charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
+	    PrintWriter out = response.getWriter();
+		
+		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityCode, authorityName, enabled);
+		
+	    out.println(JSON.toJSONString(result));
+	    out.flush();
+	    out.close();
 	}
 
 	/**
@@ -66,18 +82,19 @@ public class LogoutController extends HttpServlet {
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("调用doPost");
-		String token = request.getParameter("token");
+		
+		String userId = request.getParameter("userId");
+		String id = request.getParameter("id");
+		String authorityCode = request.getParameter("authorityCode");
+		String authorityName = request.getParameter("authorityName");
+		String enabled = request.getParameter("enabled");
+		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
-		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
-			out.println(ResultUtils.paramError(ResultEnum.CANCEL_TOKEN_ERROR));
-		    out.flush();
-		    out.close();
-		    return;
-		}
 		
-		Result<String> result = loginService.logout(token);
+		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityCode, authorityName, enabled);
+		
 	    out.println(JSON.toJSONString(result));
 	    out.flush();
 	    out.close();
@@ -89,6 +106,7 @@ public class LogoutController extends HttpServlet {
 		 * @throws ServletException if an error occurs
 		 */
 	public void init() throws ServletException {
+		// Put your code here
 	}
 
 }

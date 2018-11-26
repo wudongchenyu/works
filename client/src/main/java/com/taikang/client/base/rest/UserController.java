@@ -19,7 +19,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/api/client/user")
+@RequestMapping(path = "/api/client/user", produces = "application/json;charset=UTF-8")
 @Api(tags = "用户信息相关API")
 public class UserController {
 	

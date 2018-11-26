@@ -35,11 +35,11 @@ public class User implements Serializable{
 	private String id;
 	
 	@Description(value = "编号")
-	@Column(length = 25)
+	@Column(length = 25, name = "user_code")
 	private String userCode = SystemGeneration.getRandomTimeNumber("U", 5);
 	
 	@Description(value = "用户账号")
-	@Column(length = 20)
+	@Column(length = 20, name = "user_name")
 	private String userName;
 	
 	@Description(value = "姓名")
@@ -65,15 +65,15 @@ public class User implements Serializable{
 	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime = new Date();
 	
-	@Column
+	@Column(name = "account_non_expired")
 	@Description(value = "用户是否过期")
 	private boolean accountNonExpired;
 	
-	@Column
+	@Column(name = "account_non_locked")
 	@Description(value = "是否被锁定")
 	private boolean accountNonLocked;
 	
-	@Column
+	@Column(name = "credentials_non_expired")
 	@Description(value = "授权是否过期")
 	private boolean credentialsNonExpired;
 	

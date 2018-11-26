@@ -59,7 +59,7 @@ public class UserService {
 			statement.setString(7, user.getCoi());
 			statement.setBoolean(8, user.isEnabled());
 			statement.setBoolean(9, user.isCredentialsNonExpired());
-			statement.setDate(10, (Date) user.getCreateTime());
+			statement.setDate(10, new Date(user.getCreateTime().getTime()));
 			statement.setBoolean(11, user.isAccountNonLocked());
 			statement.setBoolean(12, user.isAccountNonExpired());
 			statement.executeUpdate();
@@ -67,12 +67,13 @@ public class UserService {
 			connection.setAutoCommit(true);
 			return ResultUtils.success(ResultEnum.SAVE_USER_SUCCESS, user);
 		} catch (Exception e) {
+			e.printStackTrace();
 			try {
 				connection.rollback();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			return ResultUtils.success(ResultEnum.SAVE_USER_ERROR);
+			return ResultUtils.success(ResultEnum.SAVE_USER_ERROR, e.getMessage(), null);
 		}finally {
 			try {
 				statement.close();
@@ -176,6 +177,10 @@ public class UserService {
 			if (!StringUtils.isEmptyOrWhitespaceOnly(coi)) {
 				sqlBuffer.append("and coi = ?");
 				params.add(coi);
+			}
+			if (!StringUtils.isEmptyOrWhitespaceOnly(id)) {
+				sqlBuffer.append("and id = ?");
+				params.add(id);
 			}
 			statement = connection.prepareStatement(sqlBuffer.toString());
 			this.setStatement(params, statement);

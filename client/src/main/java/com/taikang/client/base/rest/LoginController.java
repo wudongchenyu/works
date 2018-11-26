@@ -1,32 +1,34 @@
 package com.taikang.client.base.rest;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.alibaba.fastjson.JSONObject;
 import com.taikang.client.base.commons.Result;
 import com.taikang.client.base.feign.SsoClient;
-import com.taikang.client.base.util.CommonsUtils;
 
 import io.swagger.annotations.Api;
 
 @Api(tags = "登录相关API")
-@RestController("/sso")
+@RestController
+@RequestMapping(path = "/sso", produces = "application/json;charset=UTF-8")
 public class LoginController {
 	
 	private @Autowired SsoClient ssoClient;
 	
 	@PostMapping("/login")
-	public Result<String> login(
-			@RequestParam(required = true) String userName, 
-			@RequestParam(required = true) String passWord,
-			HttpServletRequest request) {
-		String ip = CommonsUtils.getIpAddress(request);
-		String remortAddress = request.getRequestURL().toString();
-		return ssoClient.login(userName, ip, passWord, remortAddress);
+	public Result<JSONObject> login(
+			@RequestParam(value = "username") String username, 
+			@RequestParam(value = "pass") String pass) {
+//		String ip = CommonsUtils.getIpAddress(request);
+//		String remortAddress = request.getRequestURL().toString();
+		
+		Result<JSONObject> result = ssoClient.login(username, null, pass, null);
+		
+		return result;
 	}
 	
 	@PostMapping("/logout")

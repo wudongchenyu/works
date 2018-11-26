@@ -16,6 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta name="expires" content="0">    
 	<meta name="keywords" content="keyword1,keyword2,keyword3">
 	<meta name="description" content="This is my page">
+	<link href="css/alert.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
 

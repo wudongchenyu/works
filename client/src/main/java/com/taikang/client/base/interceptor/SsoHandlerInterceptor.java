@@ -1,8 +1,5 @@
 package com.taikang.client.base.interceptor;
 
-import java.net.InetAddress;
-import java.net.URLEncoder;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -54,13 +51,15 @@ public class SsoHandlerInterceptor extends HandlerInterceptorAdapter{
 		}
 		
 		if (isMatcher) {
-			String hostAddress = InetAddress.getLocalHost().getHostAddress();
-			System.out.println(InetAddress.getLocalHost().getHostAddress());
-			response.sendRedirect("http://" + hostAddress + ":8080/ssoa/index?fromUrl=" + URLEncoder.encode(url.toString(), "UTF-8"));
+//			String hostAddress = InetAddress.getLocalHost().getHostAddress();
+//			System.out.println(InetAddress.getLocalHost().getHostAddress());
+//			response.sendRedirect("http://" + hostAddress + ":8080/ssoa/index?fromUrl=" + URLEncoder.encode(url.toString(), "UTF-8"));
+			
+			response.sendRedirect("/index");
 			return true;
 		}
 		
-		return super.preHandle(request, response, handler);
+		return true;
 	}
 	
 	@Override
