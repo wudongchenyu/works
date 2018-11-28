@@ -1,5 +1,7 @@
 package com.taikang.client.base.rest;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.alibaba.fastjson.JSONObject;
 import com.taikang.client.base.commons.Result;
 import com.taikang.client.base.feign.SsoClient;
+import com.taikang.client.base.util.CommonsUtils;
 
 import io.swagger.annotations.Api;
 
@@ -22,11 +25,12 @@ public class LoginController {
 	@PostMapping("/login")
 	public Result<JSONObject> login(
 			@RequestParam(value = "username") String username, 
-			@RequestParam(value = "pass") String pass) {
-//		String ip = CommonsUtils.getIpAddress(request);
-//		String remortAddress = request.getRequestURL().toString();
+			@RequestParam(value = "pass") String pass,
+			HttpServletRequest request) {
+		String ip = CommonsUtils.getIpAddress(request);
+		String remortAddress = request.getRequestURL().toString();
 		
-		Result<JSONObject> result = ssoClient.login(username, null, pass, null);
+		Result<JSONObject> result = ssoClient.login(username, ip, pass, remortAddress);
 		
 		return result;
 	}

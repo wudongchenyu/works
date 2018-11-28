@@ -16,20 +16,19 @@ import com.author.util.ResultEnum;
 import com.author.util.ResultUtils;
 import com.mysql.cj.util.StringUtils;
 
-@WebServlet("/checkToken")
-public class TokenController extends HttpServlet {
-
-	private LoginService loginService = LoginService.getInstance();
+@WebServlet(value = "/basic/token/check" ,name = "TokenCheckController")
+public class TokenCheckController extends HttpServlet {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3267319997956805877L;
+	private static final long serialVersionUID = -6580708817844855626L;
+	private LoginService loginService = LoginService.getInstance();
 
 	/**
 	 * Constructor of the object.
 	 */
-	public TokenController() {
+	public TokenCheckController() {
 		super();
 	}
 
@@ -65,13 +64,13 @@ public class TokenController extends HttpServlet {
 	 * @throws IOException      if an error occurred
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doPost");
+		System.out.println("调用/basic/token/check");
 		String token = request.getParameter("token");
 		response.setContentType("application/json;charset=UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
-			out.println(ResultUtils.paramError(ResultEnum.CANCEL_TOKEN_ERROR));
+			out.println(ResultUtils.paramError(ResultEnum.TOKEN_NULL_ERROR));
 			out.flush();
 			out.close();
 			return;

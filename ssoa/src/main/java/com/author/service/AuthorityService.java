@@ -30,51 +30,48 @@ public class AuthorityService {
 		return authorityService;
 	}
 
-	public Result<List<Authority>> getAllAuthority(String userId, String id, String authorityCode, String authorityName, String enabled) {
+	public Result<List<Authority>> getAllAuthority(String userId, String id, String authorityUrl, String authorityName, String subordinate) {
 		DruidPooledConnection connection = null;
 		PreparedStatement statement = null;
 		try {
 			connection = DataSourceUtils.openConnection();
 			
 			StringBuffer sqlBuffer = new StringBuffer("select sa.id,sa.authority_name,sa.authority_code,"
-					+ "sa.subordinate,sa.authority_url,sa.enabled,sa.create_time from  sso_user_authorty "
-					+ " sua left join sso_authority sa on sa.id=sua.authorty_id where 1 = 1");
+					+ "sa.subordinate,sa.authority_url,sa.enabled,sa.create_time from sso_authority sa where 1 = 1");
 			
 			List<Object> params = new ArrayList<Object>();
 			
-			if (StringUtils.isEmptyOrWhitespaceOnly(userId)) {
-				sqlBuffer.append(",sua.id = ?");
+			if (!StringUtils.isEmptyOrWhitespaceOnly(userId)) {
+				sqlBuffer.append(" and sua.id = ?");
 				params.add(userId);
 			}
 			
-			if (StringUtils.isEmptyOrWhitespaceOnly(id)) {
-				sqlBuffer.append(",sa.id = ?");
+			if (!StringUtils.isEmptyOrWhitespaceOnly(id)) {
+				sqlBuffer.append(" and sa.id = ?");
 				params.add(id);
 			}
 			
-			if (StringUtils.isEmptyOrWhitespaceOnly(authorityName)) {
-				sqlBuffer.append(",sa.authority_name = ?");
-				params.add(authorityName);
-			}
-			
-			if (StringUtils.isEmptyOrWhitespaceOnly(authorityCode)) {
-				sqlBuffer.append(",sa.authority_code = ?");
-				params.add(authorityCode);
-			}
-			
 			if (!StringUtils.isEmptyOrWhitespaceOnly(authorityName)) {
-				sqlBuffer.append(",sa.authority_name = ?");
+				sqlBuffer.append(" and sa.authority_name = ?");
 				params.add(authorityName);
 			}
 			
-			if (!StringUtils.isEmptyOrWhitespaceOnly(enabled)) {
-				sqlBuffer.append(",sa.enabled = ?");
-				params.add(enabled);
+			if (!StringUtils.isEmptyOrWhitespaceOnly(authorityUrl)) {
+				sqlBuffer.append(" and sa.authority_url = ?");
+				params.add(authorityUrl);
 			}
+			
+			if (!StringUtils.isEmptyOrWhitespaceOnly(subordinate)) {
+				sqlBuffer.append(" and sa.subordinate = ?");
+				params.add(subordinate);
+			}
+			System.out.println(sqlBuffer.toString());
+			statement = connection.prepareStatement(sqlBuffer.toString());
+			
 			this.setStatement(params, statement);
 			
-			statement = connection.prepareStatement(sqlBuffer.toString());
 			ResultSet rs = statement.executeQuery();
+			
 			
 			List<Authority> list = new ArrayList<Authority>();
 			while (rs.next()) {
@@ -90,6 +87,7 @@ public class AuthorityService {
 			}
 			return ResultUtils.success(ResultEnum.SEARCH_AUTHORTY_SUCCESS, list);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return ResultUtils.error(ResultEnum.SEARCH_AUTHORTY_ERROR);
 		}finally {
 			try {
@@ -112,7 +110,7 @@ public class AuthorityService {
 		try {
 			connection = DataSourceUtils.openConnection();
 			connection.setAutoCommit(false);
-			statement = connection.prepareStatement("insert into sso_user_authorty("
+			statement = connection.prepareStatement("insert into sso_authority("
 					+ "id,authority_name,authority_code,subordinate,authority_url,enabled,create_time) "
 					+ "values(?,?,?,?,?,?,?)");
 			statement.setString(1, authority.getId());
@@ -121,7 +119,7 @@ public class AuthorityService {
 			statement.setString(4, authority.getSubordinate());
 			statement.setString(5, authority.getAuthorityUrl());
 			statement.setBoolean(6, authority.isEnabled());
-			statement.setDate(7, (Date) authority.getCreateTime());
+			statement.setDate(7, new Date(authority.getCreateTime().getTime()));
 			int updateCount = statement.executeUpdate();
 			connection.commit();
 			connection.setAutoCommit(true);
@@ -135,7 +133,8 @@ public class AuthorityService {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			return ResultUtils.error(ResultEnum.SEARCH_AUTHORTY_ERROR);
+			e.printStackTrace();
+			return ResultUtils.error(ResultEnum.SEARCH_AUTHORTY_ERROR, e.getMessage());
 		}finally {
 			try {
 				statement.close();
@@ -155,7 +154,7 @@ public class AuthorityService {
 			connection = DataSourceUtils.openConnection();
 			connection.setAutoCommit(false);
 			statement = connection.prepareStatement("select id,authority_name,authority_code,"
-					+ "subordinate,authority_url,enabled,create_time from sso_user_authorty where id = ?");
+					+ "subordinate,authority_url,enabled,create_time from sso_authority where id = ?");
 			statement.setString(1, id);
 			ResultSet rs = statement.executeQuery();
 			Authority authority = new Authority();
@@ -169,15 +168,15 @@ public class AuthorityService {
 				authority.setSubordinate(rs.getString("subordinate"));
 			}
 			
-			StringBuffer sqlBuffer = new StringBuffer("update sso_user_authorty set id = id");
+			StringBuffer sqlBuffer = new StringBuffer("update sso_authority set id = id");
 			
 			List<Object> params = new ArrayList<Object>();
-			if (StringUtils.isEmptyOrWhitespaceOnly(authorityName)) {
+			if (!StringUtils.isEmptyOrWhitespaceOnly(authorityName)) {
 				sqlBuffer.append(",authority_name = ?");
 				params.add(authorityName);
 			}
 			
-			if (StringUtils.isEmptyOrWhitespaceOnly(subordinate)) {
+			if (!StringUtils.isEmptyOrWhitespaceOnly(subordinate)) {
 				sqlBuffer.append(",subordinate = ?");
 				params.add(subordinate);
 			}
@@ -188,10 +187,11 @@ public class AuthorityService {
 			}
 			
 			sqlBuffer.append(" where enabled=1 and id=?");
-			
+			System.out.println(sqlBuffer.toString());
 			statementUpdate = connection.prepareStatement(sqlBuffer.toString());
-			this.setStatement(params, statement);
+			this.setStatement(params, statementUpdate);
 			statementUpdate.setString(params.size()+1, id);
+			
 			statementUpdate.executeUpdate();
 			connection.commit();
 			connection.setAutoCommit(true);
@@ -202,7 +202,8 @@ public class AuthorityService {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-			return ResultUtils.error(ResultEnum.EDIT_AUTHORTY_ERROR);
+			e.printStackTrace();
+			return ResultUtils.error(ResultEnum.EDIT_AUTHORTY_ERROR, e.getMessage());
 		}finally {
 			try {
 				statement.close();
@@ -220,7 +221,7 @@ public class AuthorityService {
 		try {
 			connection = DataSourceUtils.openConnection();
 			connection.setAutoCommit(false);
-			statement = connection.prepareStatement("delete from sso_user_authorty where id=?");
+			statement = connection.prepareStatement("delete from sso_authority where id=?");
 			statement.setString(1, id);
 			statement.executeUpdate();
 			connection.commit();
@@ -247,15 +248,19 @@ public class AuthorityService {
 		for (int i = 0; i < params.size(); i++) {
 			if (params.get(i) instanceof String) {
 				statement.setString(i+1, (String) params.get(i));
+				continue;
 			}
 			if (params.get(i) instanceof Integer) {
 				statement.setInt(i+1, (Integer) params.get(i));
+				continue;
 			}
 			if (params.get(i) instanceof Double) {
 				statement.setDouble(i+1, (Double) params.get(i));
+				continue;
 			}
 			if (params.get(i) instanceof java.util.Date) {
 				statement.setDate(i+1, (Date) params.get(i));
+				continue;
 			}
 		}
 	}
@@ -267,8 +272,7 @@ public class AuthorityService {
 			connection = DataSourceUtils.openConnection();
 			
 			StringBuffer sqlBuffer = new StringBuffer("select sa.id,sa.authority_name,sa.authority_code,"
-					+ "sa.subordinate,sa.authority_url,sa.enabled,sa.create_time from  sso_user_authorty "
-					+ " sua left join sso_authority sa on sa.id=sua.authorty_id where 1 = 1 and sa.id=?");
+					+ "sa.subordinate,sa.authority_url,sa.enabled,sa.create_time from sso_authority sa where 1 = 1 and sa.id=?");
 			
 			statement = connection.prepareStatement(sqlBuffer.toString());
 			statement.setString(1, id);
@@ -284,9 +288,12 @@ public class AuthorityService {
 				authority.setAuthorityName(rs.getString("authority_name"));
 				authority.setAuthorityUrl(rs.getString("authority_url"));
 				authority.setSubordinate(rs.getString("subordinate"));
+			}else {
+				authority = null;
 			}
 			return ResultUtils.success(ResultEnum.SEARCH_AUTHORTY_SUCCESS, authority);
 		} catch (SQLException e) {
+			e.printStackTrace();
 			return ResultUtils.error(ResultEnum.SEARCH_AUTHORTY_ERROR);
 		}finally {
 			try {

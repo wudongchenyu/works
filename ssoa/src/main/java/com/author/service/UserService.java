@@ -136,9 +136,12 @@ public class UserService {
 				user.setTele(rs.getString("tele"));
 				user.setUserCode(rs.getString("user_code"));
 				user.setUserName(rs.getString("user_name"));
+			}else {
+				user = null;
 			}
 			return ResultUtils.success(ResultEnum.SEARCH_USER_SUCCESS, user);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return ResultUtils.success(ResultEnum.SEARCH_USER_ERROR);
 		}finally {
 			try {
@@ -322,7 +325,7 @@ public class UserService {
 			deleteStatement.setString(1, userId);
 			deleteStatement.executeUpdate();
 			
-			statement = connection.prepareStatement("insert into sso_user_authority(id,user_id,authorty_id) VALUES(?,?,?)");
+			statement = connection.prepareStatement("insert into sso_user_authority(id,user_id,authority_id) VALUES(?,?,?)");
 			
 			for (String authority : list) {
 				statement.setString(1, SystemGeneration.getUuidNumber(""));
@@ -340,6 +343,7 @@ public class UserService {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+			e.printStackTrace();
 			return ResultUtils.success(ResultEnum.SAVE_USER_ERROR);
 		}finally {
 			try {

@@ -60,6 +60,9 @@ public enum ResultEnum {
 	EDIT_AUTHORTY_SUCCESS(100044, "获取权限列表成功"),
 	EDIT_AUTHORTY_ERROR(110044, "获取权限列表失败"),
 	AUTHORITYLIST_NULL_ERROR(110045, "权限ID列表不能为空"),
+	RESOLVER_TOKEN_SUCCESS(100046, "token解析成功"), 
+	RESOLVER_TOKEN_ERROR(110046, "token解析失败"), 
+	TOKEN_NULL_ERROR(110047, "token不能为空"), 
 	
 	CONTINUE(100, "继续"),
 	SWITCHING_PROTOCOLS(101, "交换协议"),

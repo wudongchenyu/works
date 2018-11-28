@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/index")
+@WebServlet(value = "/index" ,name = "IndexController")
 public class IndexController extends HttpServlet {
 
 	/**

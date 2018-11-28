@@ -1,8 +1,7 @@
-package com.author.rest.authority;
+package com.author.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,24 +10,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
-import com.author.po.Authority;
-import com.author.service.AuthorityService;
+import com.author.service.LoginService;
 import com.author.util.Result;
+import com.author.util.ResultEnum;
+import com.author.util.ResultUtils;
+import com.mysql.cj.util.StringUtils;
 
-@WebServlet(value = "/basic/authority/searchList" ,name = "AuthoritySearchListController")
-public class AuthoritySearchListController extends HttpServlet {
+import jdk.jfr.Description;
+
+@Description(value = "注销权限token")
+@WebServlet(value = "/basic/authority/token/cancel" ,name = "AuthorityTokenCancelController")
+public class AuthorityTokenCancelController extends HttpServlet {
 	
-	private AuthorityService authorityService = AuthorityService.getInstance();
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5532126198274241253L;
+	private static final long serialVersionUID = 3729580448965703480L;
+	private LoginService loginService = LoginService.getInstance();
 
 	/**
 		 * Constructor of the object.
 		 */
-	public AuthoritySearchListController() {
+	public AuthorityTokenCancelController() {
 		super();
 	}
 
@@ -36,8 +39,7 @@ public class AuthoritySearchListController extends HttpServlet {
 		 * Destruction of the servlet. <br>
 		 */
 	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
+		super.destroy();
 	}
 
 	/**
@@ -51,23 +53,7 @@ public class AuthoritySearchListController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doGet");
-		
-		String userId = request.getParameter("userId");
-		String id = request.getParameter("id");
-		String authorityUrl = request.getParameter("authorityUrl");
-		String authorityName = request.getParameter("authorityName");
-		String subordinate = request.getParameter("subordinate");
-		
-		response.setContentType("application/json;charset=UTF-8");
-	    response.setCharacterEncoding("UTF-8");
-	    PrintWriter out = response.getWriter();
-		
-		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityUrl, authorityName, subordinate);
-		
-	    out.println(JSON.toJSONString(result));
-	    out.flush();
-	    out.close();
+		this.doPost(request, response);
 	}
 
 	/**
@@ -81,20 +67,22 @@ public class AuthoritySearchListController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doPost");
+		System.out.println("调用/basic/authority/token/cancel");
 		
-		String userId = request.getParameter("userId");
-		String id = request.getParameter("id");
-		String authorityCode = request.getParameter("authorityCode");
-		String authorityName = request.getParameter("authorityName");
-		String enabled = request.getParameter("enabled");
+		String token = request.getParameter("token");
+		System.out.println("token:" + token);
 		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
+		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
+			out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
 		
-		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityCode, authorityName, enabled);
-		
+		Result<String> result = loginService.authorityTokenCancel(token);
 	    out.println(JSON.toJSONString(result));
 	    out.flush();
 	    out.close();

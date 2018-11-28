@@ -17,20 +17,19 @@ import com.author.util.ResultEnum;
 import com.author.util.ResultUtils;
 import com.mysql.cj.util.StringUtils;
 
-@WebServlet("/login")
-public class LoginController extends HttpServlet {
+@WebServlet(value = "/basic/token/generate" ,name = "TokenGenerateController")
+public class TokenGenerateController extends HttpServlet {
 	
-	private LoginService loginService = LoginService.getInstance();
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8226091318446039862L;
+	private static final long serialVersionUID = -5156026892717957263L;
+	private LoginService loginService = LoginService.getInstance();
 
 	/**
 		 * Constructor of the object.
 		 */
-	public LoginController() {
+	public TokenGenerateController() {
 		super();
 	}
 
@@ -52,7 +51,7 @@ public class LoginController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doGet");
+		System.out.println("调用/basic/token/generate");
 		
 		String userName = request.getParameter("userName");
 		String passWord = request.getParameter("passWord");
@@ -78,6 +77,11 @@ public class LoginController extends HttpServlet {
 		    out.close();
 		    return;
 		}
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(ip)) {
+			ip = loginService.getIpAddress(request);
+		}
+		
 		Result<JSONObject> result = loginService.login(userName, passWord, ip, remortAddress);
 		result.getData().put("ip", ip);
 	    out.println(JSON.toJSONString(result));

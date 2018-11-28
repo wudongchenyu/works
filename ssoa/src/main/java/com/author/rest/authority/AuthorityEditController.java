@@ -69,9 +69,9 @@ public class AuthorityEditController extends HttpServlet {
 		System.out.println("调用doPut");
 		
 		String id = request.getParameter("id");
-		String authorityName = request.getParameter("authority_name");
+		String authorityName = request.getParameter("authorityName");
 		String subordinate = request.getParameter("subordinate");
-		String authorityUrl = request.getParameter("authority_url");
+		String authorityUrl = request.getParameter("authorityUrl");
 		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");

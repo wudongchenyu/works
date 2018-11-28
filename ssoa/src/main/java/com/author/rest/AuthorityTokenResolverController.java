@@ -1,4 +1,4 @@
-package com.author.rest.authority;
+package com.author.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,24 +11,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
-import com.author.po.Authority;
-import com.author.service.AuthorityService;
+import com.author.service.LoginService;
 import com.author.util.Result;
+import com.author.util.ResultEnum;
+import com.author.util.ResultUtils;
+import com.mysql.cj.util.StringUtils;
 
-@WebServlet(value = "/basic/authority/searchList" ,name = "AuthoritySearchListController")
-public class AuthoritySearchListController extends HttpServlet {
+@WebServlet(value = "/basic/authority/token/resolver" ,name = "AuthorityTokenResolverController")
+public class AuthorityTokenResolverController extends HttpServlet {
 	
-	private AuthorityService authorityService = AuthorityService.getInstance();
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5532126198274241253L;
+	private static final long serialVersionUID = 8115258904885541633L;
+	private LoginService loginService = LoginService.getInstance();
 
 	/**
 		 * Constructor of the object.
 		 */
-	public AuthoritySearchListController() {
+	public AuthorityTokenResolverController() {
 		super();
 	}
 
@@ -36,8 +37,7 @@ public class AuthoritySearchListController extends HttpServlet {
 		 * Destruction of the servlet. <br>
 		 */
 	public void destroy() {
-		super.destroy(); // Just puts "destroy" string in log
-		// Put your code here
+		super.destroy();
 	}
 
 	/**
@@ -51,23 +51,7 @@ public class AuthoritySearchListController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doGet");
-		
-		String userId = request.getParameter("userId");
-		String id = request.getParameter("id");
-		String authorityUrl = request.getParameter("authorityUrl");
-		String authorityName = request.getParameter("authorityName");
-		String subordinate = request.getParameter("subordinate");
-		
-		response.setContentType("application/json;charset=UTF-8");
-	    response.setCharacterEncoding("UTF-8");
-	    PrintWriter out = response.getWriter();
-		
-		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityUrl, authorityName, subordinate);
-		
-	    out.println(JSON.toJSONString(result));
-	    out.flush();
-	    out.close();
+		this.doPost(request, response);
 	}
 
 	/**
@@ -81,20 +65,22 @@ public class AuthoritySearchListController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doPost");
+		System.out.println("调用/basic/authority/token/resolver");
 		
-		String userId = request.getParameter("userId");
-		String id = request.getParameter("id");
-		String authorityCode = request.getParameter("authorityCode");
-		String authorityName = request.getParameter("authorityName");
-		String enabled = request.getParameter("enabled");
+		String token = request.getParameter("authorityToken");
+		System.out.println("token:" + token);
 		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
+		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
+			out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
 		
-		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityCode, authorityName, enabled);
-		
+		Result<List<String>> result = loginService.resolverAuthorityToken(token);
 	    out.println(JSON.toJSONString(result));
 	    out.flush();
 	    out.close();

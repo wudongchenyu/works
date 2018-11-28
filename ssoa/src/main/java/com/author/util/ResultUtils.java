@@ -22,6 +22,10 @@ public class ResultUtils {
 		return new Result<>(ERROR,ERROR_MESSAGE, e.getCode(), e.getMessage());
 	}
 	
+	public static <T> Result<T> error(ResultEnum e, String message) {
+		return new Result<>(ERROR,ERROR_MESSAGE, e.getCode(), e.getMessage() + message);
+	}
+	
 	public static <T> Result<T> paramError(ResultEnum e) {
 		return new Result<>(ERROR,PARAM_ERROR_MESSAGE, e.getCode(), e.getMessage());
 	}

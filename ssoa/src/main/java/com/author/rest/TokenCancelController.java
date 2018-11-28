@@ -16,20 +16,19 @@ import com.author.util.ResultEnum;
 import com.author.util.ResultUtils;
 import com.mysql.cj.util.StringUtils;
 
-@WebServlet("/logout")
-public class LogoutController extends HttpServlet {
+@WebServlet(value = "/basic/token/cancel" ,name = "TokenCancelController")
+public class TokenCancelController extends HttpServlet {
 	
-	private LoginService loginService = LoginService.getInstance();
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -784992149680060887L;
+	private static final long serialVersionUID = 6643625645924404406L;
+	private LoginService loginService = LoginService.getInstance();
 
 	/**
 		 * Constructor of the object.
 		 */
-	public LogoutController() {
+	public TokenCancelController() {
 		super();
 	}
 
@@ -65,13 +64,13 @@ public class LogoutController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doPost");
+		System.out.println("调用/basic/token/cancel");
 		String token = request.getParameter("token");
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
 		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
-			out.println(ResultUtils.paramError(ResultEnum.CANCEL_TOKEN_ERROR));
+			out.println(ResultUtils.paramError(ResultEnum.TOKEN_NULL_ERROR));
 		    out.flush();
 		    out.close();
 		    return;
