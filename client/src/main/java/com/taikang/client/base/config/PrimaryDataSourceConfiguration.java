@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "entityManagerFactoryPrimary",
 		transactionManagerRef = "transactionManagerPrimary",
-		basePackages = "com.taikang.client.base.dao.jpa"
+		basePackages = "com.taikang.sso.basic.jpa"
 		)
 @AutoConfigureAfter(DataSourceConfiguration.class)
 public class PrimaryDataSourceConfiguration {
@@ -40,7 +40,7 @@ public class PrimaryDataSourceConfiguration {
 		
 		return builder.dataSource(primaryDataSource)
 				.properties(getVendorPrpperties())
-				.packages("com.taikang.client.base.po")
+				.packages("com.taikang.sso.basic.po")
 				.persistenceUnit("primaryPersistenceUnit")
 				.build();
 	}

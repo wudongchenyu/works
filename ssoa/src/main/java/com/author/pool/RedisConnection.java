@@ -14,6 +14,10 @@ public class RedisConnection {
 		jedisPool = jedisPoolConfig();
 	}
 	
+	private RedisConnection() {
+		
+	}
+	
 	public static synchronized RedisConnection getInstance() {
 		if (null == redisConnection) {
 			redisConnection = new RedisConnection();

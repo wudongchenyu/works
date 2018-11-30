@@ -144,6 +144,31 @@
 		    <groupId>org.apache.tomcat</groupId>
 		    <artifactId>tomcat-annotations-api</artifactId>
 		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.8.1</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+	
+		<dependency>
+		    <groupId>commons-codec</groupId>
+		    <artifactId>commons-codec</artifactId>
+		    <version>1.11</version><!--$NO-MVN-MAN-VER$-->
+		</dependency>
+		<dependency>
+	        <groupId>com.taikang</groupId>
+	        <artifactId>sso</artifactId>
+	        <version>0.0.1</version>
+	        <scope>system</scope>
+	        <systemPath>${project.basedir}/lib/sso-0.0.1.jar</systemPath>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.taikang</groupId>
+	        <artifactId>result</artifactId>
+	        <version>0.0.1</version>
+	        <scope>system</scope>
+	        <systemPath>${project.basedir}/lib/result-0.0.1.jar</systemPath>
+	    </dependency>
 	</dependencies>
 
 	<dependencyManagement>

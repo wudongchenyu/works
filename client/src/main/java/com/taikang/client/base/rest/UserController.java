@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.taikang.client.base.commons.Result;
-import com.taikang.client.base.dto.UserResult;
-import com.taikang.client.base.po.User;
-import com.taikang.client.base.service.UserService;
+import com.taikang.result.basic.commons.Result;
+import com.taikang.sso.basic.dto.UserResult;
+import com.taikang.sso.basic.po.User;
+import com.taikang.sso.basic.service.UserService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

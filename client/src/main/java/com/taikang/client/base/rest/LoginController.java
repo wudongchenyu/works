@@ -9,16 +9,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
-import com.taikang.client.base.commons.Result;
-import com.taikang.client.base.dto.LoginUser;
 import com.taikang.client.base.feign.SsoTokenClient;
 import com.taikang.client.base.util.CommonsUtils;
+import com.taikang.result.basic.commons.Result;
+import com.taikang.sso.basic.dto.LoginUser;
 
 import io.swagger.annotations.Api;
 
 @Api(tags = "登录相关API")
 @RestController
-@RequestMapping(path = "/sso", produces = "application/json;charset=UTF-8")
+@RequestMapping(path = "/client", produces = "application/json;charset=UTF-8")
 public class LoginController {
 	
 	private @Autowired SsoTokenClient ssoClient;

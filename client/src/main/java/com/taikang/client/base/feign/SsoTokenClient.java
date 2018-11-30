@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSONObject;
-import com.taikang.client.base.commons.Result;
-import com.taikang.client.base.dto.LoginUser;
-import com.taikang.client.base.dto.UserAuthority;
+import com.taikang.result.basic.commons.Result;
+import com.taikang.sso.basic.dto.LoginUser;
+import com.taikang.sso.basic.po.UserAuthority;
 
 @FeignClient(name = "sso", url = "http://localhost:8080/ssoa")
 public interface SsoTokenClient {

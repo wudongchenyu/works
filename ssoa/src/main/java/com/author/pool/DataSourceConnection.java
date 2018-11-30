@@ -20,6 +20,10 @@ public class DataSourceConnection {
 		}
 	}
 	
+	private DataSourceConnection() {
+		
+	}
+	
 	public static synchronized DataSourceConnection getInstance() {
 		if (null == dataSourceConnection) {
 			dataSourceConnection = new DataSourceConnection();

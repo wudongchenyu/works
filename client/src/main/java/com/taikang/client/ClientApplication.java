@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-@ComponentScan(basePackages = "com.taikang.client")
+@ComponentScan(basePackages = {"com.taikang.client","com.taikang.sso"})
 @EnableFeignClients
 public class ClientApplication {
 

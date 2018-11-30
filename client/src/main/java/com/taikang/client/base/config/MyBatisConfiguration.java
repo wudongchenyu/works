@@ -16,7 +16,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@MapperScan(basePackages = "com.taikang.client.base.mybatis")
+@MapperScan(basePackages = "com.taikang.sso.basic.mapper")
 @EnableTransactionManagement
 @AutoConfigureAfter(DataSourceConfiguration.class)
 public class MyBatisConfiguration {
@@ -28,7 +28,7 @@ public class MyBatisConfiguration {
 	public @Bean SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
 		bean.setDataSource(this.primaryDataSource);
-		bean.setTypeAliasesPackage("com.taikang.client.base.po");
+		bean.setTypeAliasesPackage("com.taikang.sso.basic.po");
 		org.apache.ibatis.session.Configuration configuration = 
 				new org.apache.ibatis.session.Configuration();
 		bean.setConfiguration(configuration);

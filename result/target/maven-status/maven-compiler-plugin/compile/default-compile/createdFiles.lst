@@ -1,0 +1,11 @@
+com\taikang\result\basic\commons\SystemGeneration.class
+com\taikang\result\basic\commons\enums\ConstantsEnum.class
+com\taikang\result\basic\commons\IdInfo.class
+com\taikang\result\basic\commons\SnowflakeIdMaker.class
+com\taikang\result\basic\util\ResultUtils.class
+com\taikang\result\basic\commons\Constants.class
+com\taikang\result\basic\util\CommonsUtils.class
+com\taikang\result\basic\util\BeanUtils.class
+com\taikang\result\basic\commons\enums\ResultEnum.class
+com\taikang\result\basic\commons\Commons.class
+com\taikang\result\basic\commons\Result.class
