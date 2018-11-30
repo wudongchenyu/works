@@ -1,7 +1,7 @@
 package com.taikang.client.base.config;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -16,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.DefaultServletHandlerCo
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -54,13 +55,13 @@ public class MyMvcConfig implements WebMvcConfigurer{
     	return multipartResolver;
 	}
 
-	@Bean
-    public RequestMappingHandlerAdapter requestMappingHandlerAdapter() {
-        RequestMappingHandlerAdapter requestMappingHandlerAdapter = new RequestMappingHandlerAdapter();
-        requestMappingHandlerAdapter.setMessageConverters(Collections.singletonList(fastJsonHttpMessageConverter()));
-        requestMappingHandlerAdapter.setContentNegotiationManager(mvcContentNegotiationManager());
-        return requestMappingHandlerAdapter;
-    }
+//	@Bean
+//    public RequestMappingHandlerAdapter requestMappingHandlerAdapter() {
+//        RequestMappingHandlerAdapter requestMappingHandlerAdapter = new RequestMappingHandlerAdapter();
+//        requestMappingHandlerAdapter.setMessageConverters(Collections.singletonList(fastJsonHttpMessageConverter()));
+//        requestMappingHandlerAdapter.setContentNegotiationManager(mvcContentNegotiationManager());
+//        return requestMappingHandlerAdapter;
+//    }
 	
 	@Bean
 	@Autowired
@@ -85,6 +86,18 @@ public class MyMvcConfig implements WebMvcConfigurer{
 	public void configureViewResolvers(ViewResolverRegistry registry) {
 		registry.viewResolver(viewResolver());
 		registry.viewResolver(thymeleafViewResolver());
+	}
+	
+	@Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+		Iterator<HttpMessageConverter<?>> iterator = converters.iterator();
+	    while(iterator.hasNext()){
+	        HttpMessageConverter<?> converter = iterator.next();
+	        if(converter instanceof MappingJackson2HttpMessageConverter){
+	            iterator.remove();
+	        }
+	    }
+		converters.add(fastJsonHttpMessageConverter());
 	}
 	
 	@Bean

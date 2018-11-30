@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.taikang.client.base.commons.Result;
-import com.taikang.client.base.feign.SsoClient;
+import com.taikang.client.base.dto.LoginUser;
+import com.taikang.client.base.feign.SsoTokenClient;
 import com.taikang.client.base.util.CommonsUtils;
 
 import io.swagger.annotations.Api;
@@ -20,7 +21,7 @@ import io.swagger.annotations.Api;
 @RequestMapping(path = "/sso", produces = "application/json;charset=UTF-8")
 public class LoginController {
 	
-	private @Autowired SsoClient ssoClient;
+	private @Autowired SsoTokenClient ssoClient;
 	
 	@PostMapping("/login")
 	public Result<JSONObject> login(
@@ -45,5 +46,9 @@ public class LoginController {
 		return ssoClient.checkToken(token);
 	}
 	
-
+	@PostMapping("/resolver")
+	public Result<LoginUser> resolver(@RequestParam(required = true) String token) {
+		return ssoClient.resolver(token);
+	}
+	
 }

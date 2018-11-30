@@ -2,7 +2,6 @@ package com.author.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.author.po.UserAuthority;
 import com.author.service.LoginService;
 import com.author.util.Result;
 import com.author.util.ResultEnum;
@@ -80,7 +80,7 @@ public class AuthorityTokenResolverController extends HttpServlet {
 		    return;
 		}
 		
-		Result<List<String>> result = loginService.resolverAuthorityToken(token);
+		Result<UserAuthority> result = loginService.resolverAuthorityToken(token);
 	    out.println(JSON.toJSONString(result));
 	    out.flush();
 	    out.close();

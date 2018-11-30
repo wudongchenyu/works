@@ -10,28 +10,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.author.service.LoginService;
 import com.author.util.Result;
 import com.author.util.ResultEnum;
 import com.author.util.ResultUtils;
 import com.mysql.cj.util.StringUtils;
 
-import jdk.jfr.Description;
-
-@Description(value = "注销权限token")
-@WebServlet(value = "/basic/authority/token/cancel" ,name = "AuthorityTokenCancelController")
-public class AuthorityTokenCancelController extends HttpServlet {
+@WebServlet(value = "/basic/login" ,name = "LoginController")
+public class LoginController extends HttpServlet {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3729580448965703480L;
+	private static final long serialVersionUID = -5156026892717957263L;
 	private LoginService loginService = LoginService.getInstance();
 
 	/**
 		 * Constructor of the object.
 		 */
-	public AuthorityTokenCancelController() {
+	public LoginController() {
 		super();
 	}
 
@@ -67,22 +65,32 @@ public class AuthorityTokenCancelController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用/basic/authority/token/cancel");
+		System.out.println("调用doPost");
 		
-		String token = request.getParameter("authorityToken");
-		System.out.println("token:" + token);
-		
+		String userName = request.getParameter("userName");
+		String passWord = request.getParameter("passWord");
+		String fromUrl = request.getParameter("fromUrl");
+		System.out.println("userName:" + userName);
+		System.out.println("passWord:" + passWord);
+		System.out.println("ip:" + fromUrl);
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
-		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
-			out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
+		if (StringUtils.isEmptyOrWhitespaceOnly(userName)) {
+			out.println(ResultUtils.success(ResultEnum.USER_ADN_PASS_NULL_ERROR));
 		    out.flush();
 		    out.close();
 		    return;
 		}
 		
-		Result<String> result = loginService.authorityTokenCancel(token);
+		if (StringUtils.isEmptyOrWhitespaceOnly(passWord)) {
+			out.println(ResultUtils.success(ResultEnum.USER_ADN_PASS_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		Result<JSONObject> result = loginService.login(userName, passWord, fromUrl);
+		result.getData().put("fromUrl", fromUrl);
 	    out.println(JSON.toJSONString(result));
 	    out.flush();
 	    out.close();

@@ -1,4 +1,4 @@
-package com.author.po;
+package com.taikang.client.base.dto;
 
 import java.io.Serializable;
 import java.util.List;

@@ -55,8 +55,9 @@ public class SsoHandlerInterceptor extends HandlerInterceptorAdapter{
 //			System.out.println(InetAddress.getLocalHost().getHostAddress());
 //			response.sendRedirect("http://" + hostAddress + ":8080/ssoa/index?fromUrl=" + URLEncoder.encode(url.toString(), "UTF-8"));
 			
-			response.sendRedirect("/index");
-			return true;
+			if (null == accessToken) {
+				response.sendRedirect("/index");
+			}
 		}
 		
 		return true;

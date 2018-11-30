@@ -17,6 +17,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.author.po.LoginUser;
 import com.author.po.User;
+import com.author.po.UserAuthority;
 import com.author.util.DataSourceUtils;
 import com.author.util.PassDecode;
 import com.author.util.RedisUtils;
@@ -243,19 +244,22 @@ public class LoginService {
 			
 		}
 		
-		String authorities = String.join(",", list);
+		UserAuthority ua = new UserAuthority();
+		ua.setAuthorities(list);
+		ua.setUserId(user.getUserId());
 		
-		String authoritiesToken = PassDecode.aesEncrypt(authorities);//BCrypt.hashpw(tokensBuffer.toString(), BCrypt.gensalt());
+		String jsonString = JSON.toJSONString(ua);
+		
+		String authoritiesToken = PassDecode.aesEncrypt(jsonString);//BCrypt.hashpw(tokensBuffer.toString(), BCrypt.gensalt());
 		Jedis jedis = RedisUtils.openJedis();
-		String key = "authority_token:" + token + ",user:" + user.getUserName();
-		
+		String key = "authority_token:" + authoritiesToken + ",user:" + user.getUserName();
+		System.out.println(key);
 		Set<String> set = jedis.keys("authority_token:*,user:" + user.getUserName());
 		for (String keys : set) {
-			System.out.println(keys);
 			jedis.del(keys);
 		}
 		
-		jedis.set(key, authorities);
+		jedis.set(key, jsonString);
 		jedis.expire(key, 10*60);
 		jedis.close();
 		JSONObject toJsonObject = new JSONObject();
@@ -285,12 +289,13 @@ public class LoginService {
 		return ResultUtils.success(ResultEnum.CANCEL_TOKEN_ERROR);
 	}
 
-	public Result<List<String>> resolverAuthorityToken(String token) {
+	public Result<UserAuthority> resolverAuthorityToken(String token) {
 		
 		try {
 			String decrypt = PassDecode.aesDecrypt(token);
-			List<String> list = JSON.parseObject(decrypt, new TypeReference<List<String>>() {});
-			return ResultUtils.success(ResultEnum.RESOLVER_TOKEN_SUCCESS, list);
+			
+			UserAuthority ua = JSON.parseObject(decrypt, new TypeReference<UserAuthority>() {});
+			return ResultUtils.success(ResultEnum.RESOLVER_TOKEN_SUCCESS, ua);
 		} catch (Exception e) {
 			return ResultUtils.error(ResultEnum.RESOLVER_TOKEN_ERROR);
 		}
