@@ -3,6 +3,7 @@ package com.taikang.client.base.rest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,15 +19,15 @@ import io.swagger.annotations.Api;
 
 @Api(tags = "sso登录相关API")
 @RestController
-@RequestMapping(path = "/sso", produces = "application/json;charset=UTF-8")
+@RequestMapping(path = "/sso", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
 public class LoginFromJarController {
 	
 	private @Autowired LoginService loginService;
 	
 	@PostMapping("/login")
 	public Result<JSONObject> login(
-			@RequestParam(value = "username") String username, 
-			@RequestParam(value = "pass") String pass,
+			@RequestParam(value = "username", name = "username") String username, 
+			@RequestParam(value = "pass", name = "pass") String pass,
 			HttpServletRequest request) {
 		String ip = CommonsUtils.getIpAddress(request);
 		String remortAddress = request.getRequestURL().toString();

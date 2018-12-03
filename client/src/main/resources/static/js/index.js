@@ -7,9 +7,11 @@ function tj(){
 	var data={"username":username,"pass":pass};
 	$.ajax({
 		url: "/sso/login",
-		data: JSON.stringify({'username':username,'pass':pass}),
-		type:"post",
-		contentType:'application/json',
+		data: {
+			username:$("#userName").val(),
+			pass:$("#passWord").val()
+		},
+		type:"POST",
 		dataType:"json",
 		success: function(result){
 			if(result.code=="100031" || result.code == 100031){
