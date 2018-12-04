@@ -3,8 +3,6 @@ package com.taikang.sso.basic.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.annotation.Resource;
-
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserService {
 	
-	private @Resource UserRepository userPrimaryRepository;
+	private @Autowired UserRepository userRepository;
 	
 	private @Autowired UserMapper userMapper;
 	
@@ -39,7 +37,7 @@ public class UserService {
 			user.setUserName(userName);
 			user.setTele(tele);
 			user.setPass(BCrypt.hashpw(pass, BCrypt.gensalt()));
-			User save = userPrimaryRepository.save(user);
+			User save = userRepository.save(user);
 			return ResultUtils.success(ResultEnum.SAVE_USER_SUCCESS, save);
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
@@ -50,12 +48,12 @@ public class UserService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public User findByUserCode(String userCode) {
-		return userPrimaryRepository.findByUserCode(userCode);
+		return userRepository.findByUserCode(userCode);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public User findByUserCodeOrName(String userCode, String name) {
-		return userPrimaryRepository.findByUserCodeOrName(userCode, name);
+		return userRepository.findByUserCodeOrName(userCode, name);
 	}
 
 	public Result<List<UserResult>> userList() {
@@ -72,12 +70,12 @@ public class UserService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Result<User> deleteUser(String id) {
 		try {
-			User user = userPrimaryRepository.findById(id);
+			User user = userRepository.findById(id);
 			if (null == user) {
 				return ResultUtils.success(ResultEnum.USER_NON_EXISTENT);
 			}
 			user.setEnabled(false);
-			userPrimaryRepository.save(user);
+			userRepository.save(user);
 			return ResultUtils.success(ResultEnum.DELETE_USER_SUCCESS);
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
@@ -90,7 +88,7 @@ public class UserService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Result<User> editUser(String id, String userName, String pass, String tele, String coi) {
 		try {
-			User user = userPrimaryRepository.findById(id);
+			User user = userRepository.findById(id);
 			if (null == user) {
 				return ResultUtils.success(ResultEnum.USER_NON_EXISTENT);
 			}
@@ -98,7 +96,7 @@ public class UserService {
 			user.setName(userName);
 			user.setPass(pass);
 			user.setTele(tele);
-			userPrimaryRepository.save(user);
+			userRepository.save(user);
 			return ResultUtils.success(ResultEnum.EDIT_USER_SUCCESS);
 		} catch (Exception e) {
 			log.error(e.getMessage(),e);
@@ -108,7 +106,7 @@ public class UserService {
 	}
 
 	public Result<UserResult> detail(String userName) {
-		User user = userPrimaryRepository.findByUserName(userName);
+		User user = userRepository.findByUserName(userName);
 		if (null == user) {
 			return ResultUtils.success(ResultEnum.DETAIL_USER_ERROR);
 		}

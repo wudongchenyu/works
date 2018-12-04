@@ -38,4 +38,13 @@ public class Authority implements Serializable{
 	@Description(value = "是否禁用")
 	private boolean enabled = true;
 	
+	@Description(value = "系统")
+	private String systems;
+	
+	@Description(value = "应用")
+	private String appId;
+	
+	@Description(value = "渠道")
+	private String channel;
+	
 }

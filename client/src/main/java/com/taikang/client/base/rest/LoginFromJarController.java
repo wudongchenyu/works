@@ -17,7 +17,7 @@ import com.taikang.sso.basic.service.LoginService;
 
 import io.swagger.annotations.Api;
 
-@Api(tags = "sso登录相关API")
+@Api(tags = "使用jar包登录相关API")
 @RestController
 @RequestMapping(path = "/sso", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE,MediaType.APPLICATION_FORM_URLENCODED_VALUE})
 public class LoginFromJarController {

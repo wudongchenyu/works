@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
+import com.taikang.client.base.dto.UserAuthority;
 import com.taikang.client.base.feign.SsoTokenClient;
 import com.taikang.result.basic.commons.Result;
 import com.taikang.sso.basic.dto.UserAuthorityToken;
 import com.taikang.sso.basic.po.Authority;
-import com.taikang.sso.basic.po.UserAuthority;
 import com.taikang.sso.basic.service.AuthorityService;
 import com.taikang.sso.basic.service.LoginService;
 
@@ -23,7 +23,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(path = "/api/client/authority", produces = "application/json;charset=UTF-8")
-@Api(tags = "权限信息相关API")
+@Api(tags = "远程调用权限信息相关API")
 public class AuthorityController {
 
 	private @Autowired AuthorityService authorityService;
@@ -31,7 +31,7 @@ public class AuthorityController {
 	private @Autowired SsoTokenClient ssoTokenClient;
 
 	private @Autowired LoginService loginService;
-
+	
 	@ApiOperation(value = "添加权限信息", notes = "添加权限信息")
 	@ApiImplicitParams(value = {
 			@ApiImplicitParam(name = "authorityName", value = "名称", required = true, dataType = "String"),
@@ -63,23 +63,21 @@ public class AuthorityController {
 	}
 
 	@ApiOperation(value = "添加权限信息", notes = "添加权限信息")
-	@ApiImplicitParams(value = { @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "authorityName", value = "名称", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "subordinate", value = "所属", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "authorityUrl", value = "URL", required = true, dataType = "String") })
+	@ApiImplicitParams(value = { @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String")})
 	@PostMapping("/detail")
 	public Result<Authority> detail(String id) {
 		Result<Authority> result = authorityService.detail(id);
 		return result;
 	}
 
-	@ApiOperation(value = "添加权限信息", notes = "添加权限信息")
-	@ApiImplicitParams(value = { @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "authorityName", value = "名称", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "subordinate", value = "所属", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "authorityUrl", value = "URL", required = true, dataType = "String") })
+	@ApiOperation(value = "权限列表查询", notes = "权限列表查询")
+	@ApiImplicitParams(value = { @ApiImplicitParam(name = "id", value = "ID", dataType = "String"),
+			@ApiImplicitParam(name = "authorityName", value = "名称", dataType = "String"),
+			@ApiImplicitParam(name = "subordinate", value = "所属", dataType = "String"),
+			@ApiImplicitParam(name = "authorityUrl", value = "URL", dataType = "String") })
 	@PostMapping("/list")
-	public Result<List<Authority>> list(String id) {
+	public Result<List<Authority>> list(String id, String authorityName, String subordinate, String authorityUrl) {
+		
 		Result<List<Authority>> result = authorityService.list(id);
 		return result;
 	}

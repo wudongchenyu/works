@@ -16,7 +16,7 @@ import com.taikang.sso.basic.dto.LoginUser;
 
 import io.swagger.annotations.Api;
 
-@Api(tags = "登录相关API")
+@Api(tags = "远程调用登录相关API")
 @RestController
 @RequestMapping(path = "/client", produces = "application/json;charset=UTF-8")
 public class LoginController {

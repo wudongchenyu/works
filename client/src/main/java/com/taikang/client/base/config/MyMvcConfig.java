@@ -15,7 +15,6 @@ import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -26,7 +25,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.taikang.client.base.interceptor.SsoHandlerInterceptor;
 
 @Configuration//这是Java配置类
 @ComponentScan(basePackages = {"com.taikang.client"})//扫描com包
@@ -36,15 +34,6 @@ public class MyMvcConfig implements WebMvcConfigurer{
 	public void configureDefaultServletHandling(
 			DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
-	}
-	
-	public @Bean SsoHandlerInterceptor ssoHandlerInterceptor() {
-		return new SsoHandlerInterceptor();
-	}
-	
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(ssoHandlerInterceptor());
 	}
 	
 	public @Bean MultipartResolver multipartResolver() {

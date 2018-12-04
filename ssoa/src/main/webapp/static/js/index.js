@@ -3,7 +3,7 @@
  */
 function tj(){
 	$.ajax({
-		url: "login",
+		url: "basic/login",
 		data: {
 			userName:$("#userName").val(),
 			passWord:$("#passWord").val(),

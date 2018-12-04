@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(path = "/api/sso/authority", produces = "application/json;charset=UTF-8")
-@Api(tags = "sso权限信息相关API")
+@Api(tags = "使用jar包权限信息相关API")
 public class AuthorityFromJarController {
 
 	private @Autowired LoginService loginService;

@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.alibaba.fastjson.JSONObject;
+import com.taikang.client.base.dto.UserAuthority;
 import com.taikang.result.basic.commons.Result;
 import com.taikang.sso.basic.dto.LoginUser;
-import com.taikang.sso.basic.po.UserAuthority;
 
 @FeignClient(name = "sso", url = "http://localhost:8080/ssoa")
 public interface SsoTokenClient {
@@ -23,7 +23,7 @@ public interface SsoTokenClient {
 	public <T> Result<T> logout(@RequestParam String token);
 	
 	@PostMapping("/basic/token/check")
-	public <T> Result<T> checkToken(@RequestParam String token);
+	public Result<String> checkToken(@RequestParam String token);
 	
 	@PostMapping("/basic/token/resolver")
 	public Result<LoginUser> resolver(@RequestParam String token);

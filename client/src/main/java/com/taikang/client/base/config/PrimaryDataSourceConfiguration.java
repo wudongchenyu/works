@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
 		entityManagerFactoryRef = "entityManagerFactoryPrimary",
 		transactionManagerRef = "transactionManagerPrimary",
-		basePackages = "com.taikang.sso.basic.jpa"
+		basePackages = {"com.taikang.sso.basic.jpa","com.taikang.client.base.dto.jpa"}
 		)
 @AutoConfigureAfter(DataSourceConfiguration.class)
 public class PrimaryDataSourceConfiguration {

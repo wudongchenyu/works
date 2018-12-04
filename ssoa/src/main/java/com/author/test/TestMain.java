@@ -16,7 +16,7 @@ import redis.clients.jedis.Jedis;
 public class TestMain {
 
 	public static void main(String[] args) {
-		IntStream.range(0, 30).forEach(i->System.out.println(createToken()));
+		IntStream.range(0, 30).forEach(i->System.out.println(SystemGeneration.getUuidNumber("")));
 	}
 
 	public static void deleteKeys() {
