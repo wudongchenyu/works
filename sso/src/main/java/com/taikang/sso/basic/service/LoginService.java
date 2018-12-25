@@ -71,6 +71,9 @@ public class LoginService {
 		log.info("loginUserString：" + loginUserString);
 		String token = PassDecode.aesEncrypt(loginUserString);
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		String key = "token_" + token + ",user_" + user.getUserName();
 		
 		Set<String> set = jedis.keys("token_*,user_" + user.getUserName());
@@ -81,7 +84,7 @@ public class LoginService {
 		
 		jedis.set(key, loginUserString);
 		jedis.expire(key, 10*60);
-		jedis.close();
+		RedisUtils.closeJedis(jedis);
 		JSONObject toJsonObject = new JSONObject();
 		toJsonObject.put("token", token);
 		log.info("token：" + toJsonObject.toJSONString());
@@ -95,6 +98,9 @@ public class LoginService {
 	 */
 	public Result<Boolean> logout(String token) {
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		Set<String> set = jedis.keys("*" + token + "*");
 		
 		if (null == set || set.size() == 0) {
@@ -105,7 +111,7 @@ public class LoginService {
 			System.out.println(keys);
 			jedis.del(keys);
 		}
-		jedis.close();
+		RedisUtils.closeJedis(jedis);
 		return ResultUtils.success(ResultEnum.CANCEL_TOKEN_SUCCESS, true);
 	}
 
@@ -116,9 +122,12 @@ public class LoginService {
 	 */
 	public Result<Boolean> checkToken(String token) {
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		
 		Set<String> set = jedis.keys("*" + token + "*");
-		jedis.close();
+		RedisUtils.closeJedis(jedis);
 		if (null != set && set.size() > 0) {
 			return ResultUtils.success(ResultEnum.CHECK_TOKEN_SUCCESS, true);
 		}
@@ -152,6 +161,9 @@ public class LoginService {
 		
 		String authoritiesToken = PassDecode.aesEncrypt(jsonString);//BCrypt.hashpw(tokensBuffer.toString(), BCrypt.gensalt());
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		String key = "authority_token:" + authoritiesToken + ",user:" + user.getUserName();
 		System.out.println(key);
 		Set<String> set = jedis.keys("authority_token:*,user:" + user.getUserName());
@@ -161,7 +173,7 @@ public class LoginService {
 		
 		jedis.set(key, jsonString);
 		jedis.expire(key, 10*60);
-		jedis.close();
+		RedisUtils.closeJedis(jedis);
 		JSONObject toJsonObject = new JSONObject();
 		toJsonObject.put("authoritiesToken", authoritiesToken);
 		return ResultUtils.success(ResultEnum.GENERATE_TOKEN_SUCCESS, toJsonObject);
@@ -180,13 +192,16 @@ public class LoginService {
 	 */
 	public Result<Boolean> checkAuthorityToken(String token) {
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		
 		Set<String> set = jedis.keys("*" + token + "*");
 		if (null != set && set.size() > 0) {
-			jedis.close();
+			RedisUtils.closeJedis(jedis);
 			return ResultUtils.success(ResultEnum.CHECK_TOKEN_SUCCESS, true);
 		}
-		jedis.close();
+		RedisUtils.closeJedis(jedis);
 		return ResultUtils.success(ResultEnum.CANCEL_TOKEN_ERROR);
 	}
 
@@ -196,7 +211,17 @@ public class LoginService {
 	 * @return
 	 */
 	public Result<UserAuthorityToken> resolverAuthorityToken(String token) {
+		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		
+		Set<String> set = jedis.keys("*" + token + "*");
+		RedisUtils.closeJedis(jedis);
+		
+		if (null == set || set.size() == 0) {
+			return ResultUtils.error(ResultEnum.CANCEL_TOKEN_ERROR);
+		}
 		try {
 			String decrypt = PassDecode.aesDecrypt(token);
 			
@@ -215,10 +240,13 @@ public class LoginService {
 	 */
 	public Result<Boolean> authorityTokenCancel(String token) {
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		Set<String> set = jedis.keys("*" + token + "*");
 		
 		if (null == set || set.size() == 0) {
-			jedis.close();
+			RedisUtils.closeJedis(jedis);
 			return ResultUtils.error(ResultEnum.CANCEL_TOKEN_ERROR);
 		}
 		
@@ -226,7 +254,7 @@ public class LoginService {
 			System.out.println(keys);
 			jedis.del(keys);
 		}
-		jedis.close();
+		RedisUtils.closeJedis(jedis);
 		return ResultUtils.success(ResultEnum.CANCEL_TOKEN_SUCCESS, true);
 	}
 
@@ -236,6 +264,18 @@ public class LoginService {
 	 * @return
 	 */
 	public Result<LoginUser> resolverToken(String token) {
+		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
+		
+		Set<String> set = jedis.keys("*" + token + "*");
+		RedisUtils.closeJedis(jedis);
+		
+		if (null == set || set.size() == 0) {
+			return ResultUtils.error(ResultEnum.CANCEL_TOKEN_ERROR);
+		}
+		
 		try {
 			String decrypt = PassDecode.aesDecrypt(token);
 			LoginUser loginUser = JSON.parseObject(decrypt, new TypeReference<LoginUser>() {});

@@ -76,6 +76,7 @@ public enum ResultEnum {
 	SEARCH_AUTHORITY_ERROR(110053,"查询权限失败"),
 	NO_SUCH_AUTHORITY_ERROR(110054,"当前登录用户没有该权限"),
 	AUTHORITY_NOT_EXIT_ERROR(110055,"没有授权或授权已过期"),
+	JEDIS_NOT_EXIT_ERROR(110056,"jedis获取失败"),
 	
 	CONTINUE(100, "继续"),
 	SWITCHING_PROTOCOLS(101, "交换协议"),

@@ -1,9 +1,11 @@
 package com.author.service;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -24,13 +26,16 @@ import com.author.util.RedisUtils;
 import com.author.util.Result;
 import com.author.util.ResultEnum;
 import com.author.util.ResultUtils;
+import com.author.util.SystemGeneration;
 import com.mysql.cj.util.StringUtils;
 
+import lombok.extern.log4j.Log4j2;
 import redis.clients.jedis.Jedis;
 
+@Log4j2
 public class LoginService {
 	
-	private static LoginService loginService;
+	private volatile static LoginService loginService;
 	
 	private LoginService() {
 		
@@ -43,21 +48,25 @@ public class LoginService {
 		return loginService;
 	}
 	
-	public Result<JSONObject> login(String userName, String passWord, String ip) {
+	public Result<JSONObject> login(String userName, String passWord, String fromUrl) {
 		if (StringUtils.isEmptyOrWhitespaceOnly(userName)) {
-			return ResultUtils.success(ResultEnum.USER_ADN_PASS_ERROR);
+			return ResultUtils.error(ResultEnum.USER_ADN_PASS_ERROR);
 		}
 		
 		User user= new User();
 		try {
+			log.info("开始获取数据库连接：" + System.nanoTime());
 			DruidPooledConnection connection = DataSourceUtils.openConnection();
+			log.info("获取数据库连接成功：" + System.nanoTime());
 			connection.setAutoCommit(false);
 			PreparedStatement statement = connection.prepareStatement("select id,user_name,user_code,name,pass,tele,coi,"
 					+ "enabled,account_non_expired,account_non_locked,credentials_non_expired,"
 					+ "create_time from sso_user where user_name=? and enabled = 1 and "
 					+ "account_non_expired = 1 and account_non_locked = 1 and credentials_non_expired = 1 limit 1");
 			statement.setString(1, userName);
+			log.info("开始执行查询：" + System.nanoTime());
 			ResultSet rs = statement.executeQuery();
+			log.info("执行查询结束：" + System.nanoTime());
 			if (rs.next()) {
 				 user.setId(rs.getString("id"));
 				 user.setAccountNonExpired(rs.getBoolean("account_non_expired"));
@@ -72,44 +81,81 @@ public class LoginService {
 				 user.setUserCode(rs.getString("user_code"));
 				 user.setUserName(rs.getString("user_name"));
 			}
+			log.info("结果集处理结束：" + System.nanoTime());
 			statement.close();
 			connection.close();
+			log.info("数据连接关闭结束：" + System.nanoTime());
 			if (!BCrypt.checkpw(passWord, user.getPass()) && !user.getPass().equals(passWord)) {
-				return ResultUtils.success(ResultEnum.USER_ADN_PASS_ERROR);
+				return ResultUtils.error(ResultEnum.USER_ADN_PASS_ERROR);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return ResultUtils.error(ResultEnum.DATABASE_CONNECTION_EXIT_ERROR);
 		}
 		
-		StringBuffer tokensBuffer = new StringBuffer("");
-		tokensBuffer.append(ip+",");
-		tokensBuffer.append(System.nanoTime()+",");
-		tokensBuffer.append(user.getId()+",");
-		tokensBuffer.append(user.getUserName()+",");
-		tokensBuffer.append(user.getName());
-		String token = BCrypt.hashpw(tokensBuffer.toString(), BCrypt.gensalt());
-		Jedis jedis = RedisUtils.openJedis();
-		String key = "token_" + token + ",user_" + user.getUserName();
+		if (StringUtils.isEmptyOrWhitespaceOnly(user.getId())) {
+			return ResultUtils.error(ResultEnum.USER_ADN_PASS_ERROR);
+		}
 		
-		Set<String> set = jedis.keys("token_*," + user.getUserName());
+		log.info("获取redis连接：" + System.nanoTime());
+		Jedis jedis = RedisUtils.openJedis();
+		log.info("获取redis结束：" + System.nanoTime());
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
+		
+		Set<String> tokenSet = jedis.keys("token_*," + userName);
+		Iterator<String> iterator = tokenSet.iterator();
+		String token = null;
+		log.info("判断有没有token：" + System.nanoTime());
+		if (iterator.hasNext()) {
+			log.info("有token");
+			token = iterator.next();
+			token = token.substring(6,token.indexOf(",user_"));
+		}else {
+			log.info("没有token,开始生成token：" + System.nanoTime());
+			LoginUser loginUser = new LoginUser();
+			loginUser.setIp(fromUrl);
+			loginUser.setName(user.getName());
+			loginUser.setUserId(user.getId());
+			loginUser.setUserName(user.getUserName());
+			String loginUserString = JSON.toJSONString(loginUser);
+			
+			token = PassDecode.aesEncrypt(loginUserString);
+			log.info("生成token结束：" + System.nanoTime());
+		}
+		
+		String code = SystemGeneration.getUuidNumber("");
+		String key = "code_" + code + ",user_" + user.getUserName();
+		log.info("开始删除redis中该用户旧数据：" + System.nanoTime());
+		Set<String> set = jedis.keys("code_*," + user.getUserName());
 		for (String keys : set) {
-			System.out.println(keys);
+			log.info(keys);
 			jedis.del(keys);
 		}
-		
-		jedis.set(key, tokensBuffer.toString());
+		log.info("删除redis中该用户旧数据结束：" + System.nanoTime());
+		log.info("保存新数据到redis开始：" + System.nanoTime());
+		jedis.set(key, token);
 		jedis.expire(key, 10*60);
 		jedis.close();
+		log.info("保存新数据到redis结束：" + System.nanoTime());
+		
+		
 		JSONObject toJsonObject = new JSONObject();
 		toJsonObject.put("token", token);
+		toJsonObject.put("code", code);
+		log.info("返回数据封装结束：" + System.nanoTime());
 		return ResultUtils.success(ResultEnum.GENERATE_TOKEN_SUCCESS, toJsonObject);
 	}
 
 	public Result<String> logout(String token) {
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		Set<String> set = jedis.keys("*" + token + "*");
 		for (String keys : set) {
-			System.out.println(keys);
+			log.info(keys);
 			jedis.del(keys);
 		}
 		jedis.close();
@@ -118,6 +164,9 @@ public class LoginService {
 
 	public Result<String> checkToken(String token) {
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		
 		Set<String> set = jedis.keys("*" + token + "*");
 		if (null != set && set.size() > 0) {
@@ -197,11 +246,14 @@ public class LoginService {
 		
 		String token = PassDecode.aesEncrypt(loginUserString);//BCrypt.hashpw(tokensBuffer.toString(), BCrypt.gensalt());
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		String key = "token_" + token + ",user_" + user.getUserName();
 		
 		Set<String> set = jedis.keys("token_*,user_" + user.getUserName());
 		for (String keys : set) {
-			System.out.println(keys);
+			log.info(keys);
 			jedis.del(keys);
 		}
 		
@@ -213,7 +265,12 @@ public class LoginService {
 		return ResultUtils.success(ResultEnum.GENERATE_TOKEN_SUCCESS, toJsonObject);
 	}
 
-	public Result<JSONObject> authorityToken(String token) {
+	public Result<JSONObject> authorityToken(
+			String token, 
+			String subordinateSystem, 
+			String subordinateApp, 
+			String subordinateModule, 
+			String channel) {
 		
 		LoginUser user = this.getLoginUser(token);
 		
@@ -223,7 +280,35 @@ public class LoginService {
 		try {
 			connection = DataSourceUtils.openConnection();
 			connection.setAutoCommit(false);
-			statement = connection.prepareStatement("select authority_url from sso_user_authority sua left join sso_authority sa on sa.id=sua.authority_id where user_id=?");
+			StringBuffer sqlBuffer = new StringBuffer("select authority_url from sso_user_authority sua left join sso_authority sa on sa.id=sua.authority_id where ");
+			
+			List<Object> params = new ArrayList<Object>();
+			
+			sqlBuffer.append(" user_id=?");
+			params.add(user.getUserId());
+			if (!StringUtils.isEmptyOrWhitespaceOnly(subordinateSystem)) {
+				sqlBuffer.append(" and sa.subordinate_system = ?");
+				params.add(subordinateSystem);
+			}
+			
+			if (!StringUtils.isEmptyOrWhitespaceOnly(subordinateApp)) {
+				sqlBuffer.append(" and sa.subordinate_app = ?");
+				params.add(subordinateApp);
+			}
+			
+			if (!StringUtils.isEmptyOrWhitespaceOnly(subordinateModule)) {
+				sqlBuffer.append(" and sa.subordinate_module = ?");
+				params.add(subordinateModule);
+			}
+			
+			if (!StringUtils.isEmptyOrWhitespaceOnly(channel)) {
+				sqlBuffer.append(" and INSTR(sa.channel,?)>0");
+				params.add(channel);
+			}
+			log.info(sqlBuffer.toString());
+			statement = connection.prepareStatement(sqlBuffer.toString());
+			this.setStatement(params, statement);
+			
 			statement.setString(1, user.getUserId());
 			ResultSet rs = statement.executeQuery();
 			while (rs.next()) {
@@ -252,8 +337,11 @@ public class LoginService {
 		
 		String authoritiesToken = PassDecode.aesEncrypt(jsonString);//BCrypt.hashpw(tokensBuffer.toString(), BCrypt.gensalt());
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		String key = "authority_token:" + authoritiesToken + ",user:" + user.getUserName();
-		System.out.println(key);
+		log.info(key);
 		Set<String> set = jedis.keys("authority_token:*,user:" + user.getUserName());
 		for (String keys : set) {
 			jedis.del(keys);
@@ -274,11 +362,14 @@ public class LoginService {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("asd".hashCode());
+		log.info("asd".hashCode());
 	}
 
 	public Result<String> checkAuthorityToken(String token) {
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		
 		Set<String> set = jedis.keys("*" + token + "*");
 		if (null != set && set.size() > 0) {
@@ -290,6 +381,17 @@ public class LoginService {
 	}
 
 	public Result<UserAuthority> resolverAuthorityToken(String token) {
+		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
+		
+		Set<String> set = jedis.keys("*" + token + "*");
+		jedis.close();
+		
+		if (null == set || set.size() == 0) {
+			return ResultUtils.error(ResultEnum.CANCEL_TOKEN_ERROR);
+		}
 		
 		try {
 			String decrypt = PassDecode.aesDecrypt(token);
@@ -304,9 +406,12 @@ public class LoginService {
 
 	public Result<String> authorityTokenCancel(String token) {
 		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
 		Set<String> set = jedis.keys("*" + token + "*");
 		for (String keys : set) {
-			System.out.println(keys);
+			log.info(keys);
 			jedis.del(keys);
 		}
 		jedis.close();
@@ -314,6 +419,17 @@ public class LoginService {
 	}
 
 	public Result<LoginUser> resolverToken(String token) {
+		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
+		
+		Set<String> set = jedis.keys("*" + token + "*");
+		jedis.close();
+		
+		if (null == set || set.size() == 0) {
+			return ResultUtils.error(ResultEnum.CANCEL_TOKEN_ERROR);
+		}
 		try {
 			String decrypt = PassDecode.aesDecrypt(token);
 			LoginUser loginUser = JSON.parseObject(decrypt, new TypeReference<LoginUser>() {});
@@ -322,6 +438,53 @@ public class LoginService {
 			return ResultUtils.error(ResultEnum.RESOLVER_TOKEN_ERROR);
 		}
 		
+	}
+
+	public Result<JSONObject> acquireToken(String code) {
+		Jedis jedis = RedisUtils.openJedis();
+		if (jedis == null) {
+			ResultUtils.error(ResultEnum.JEDIS_NOT_EXIT_ERROR);
+		}
+		String key = "code_" + code + ",user_*";
+		Set<String> set = jedis.keys(key);
+		if (null == set || set.size() == 0) {
+			return ResultUtils.error(ResultEnum.CANCEL_TOKEN_ERROR);
+		}
+		key = set.iterator().next();
+		String token = jedis.get(key);
+		jedis.del(key);
+		
+		String decrypt = PassDecode.aesDecrypt(token);
+		LoginUser loginUser = JSON.parseObject(decrypt, new TypeReference<LoginUser>() {});
+		
+		key = "token_" + token + ",user_" + loginUser.getUserName();
+		jedis.set(key, JSON.toJSONString(loginUser));
+		jedis.expire(key, 10*60);
+		jedis.close();
+		JSONObject toJsonObject = new JSONObject();
+		toJsonObject.put("token", token);
+		return ResultUtils.success(ResultEnum.GENERATE_TOKEN_SUCCESS, toJsonObject);
+	}
+	
+	private void setStatement(List<Object> params, PreparedStatement statement) throws SQLException {
+		for (int i = 0; i < params.size(); i++) {
+			if (params.get(i) instanceof String) {
+				statement.setString(i+1, (String) params.get(i));
+				continue;
+			}
+			if (params.get(i) instanceof Integer) {
+				statement.setInt(i+1, (Integer) params.get(i));
+				continue;
+			}
+			if (params.get(i) instanceof Double) {
+				statement.setDouble(i+1, (Double) params.get(i));
+				continue;
+			}
+			if (params.get(i) instanceof java.util.Date) {
+				statement.setDate(i+1, (Date) params.get(i));
+				continue;
+			}
+		}
 	}
 	
 }

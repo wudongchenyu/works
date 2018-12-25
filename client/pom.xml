@@ -156,6 +156,11 @@
 		    <version>1.11</version><!--$NO-MVN-MAN-VER$-->
 		</dependency>
 		<dependency>
+		    <groupId>org.javassist</groupId>
+		    <artifactId>javassist</artifactId>
+		    <version>3.24.0-GA</version>
+		</dependency>
+		<dependency>
 	        <groupId>com.taikang</groupId>
 	        <artifactId>sso</artifactId>
 	        <version>0.0.1</version>
@@ -188,6 +193,15 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version><!--$NO-MVN-MAN-VER$-->
+				<configuration>
+					<source>10</source>
+					<target>10</target>
+				</configuration>
 			</plugin>
 		</plugins>
 		<resources>

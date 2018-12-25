@@ -1,5 +1,6 @@
 D:\development\works\sso\src\main\java\com\taikang\sso\basic\dto\LoginUser.java
 D:\development\works\sso\src\main\java\com\taikang\sso\basic\mapper\UserMapper.java
+D:\development\works\sso\src\main\java\com\taikang\sso\basic\util\PropertiesLoader.java
 D:\development\works\sso\src\main\java\com\taikang\sso\basic\po\Authority.java
 D:\development\works\sso\src\main\java\com\taikang\sso\basic\jpa\UserRepository.java
 D:\development\works\sso\src\main\java\com\taikang\sso\basic\po\UserAuthority.java

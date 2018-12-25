@@ -2,6 +2,7 @@ package com.author.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -66,11 +67,15 @@ public class TokenGenerateController extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("调用/basic/token/generate");
-
-		String userName = request.getParameter("userName");
-		String passWord = request.getParameter("passWord");
-		String ip = request.getParameter("ip");
-		String remortAddress = request.getParameter("remortAddress");
+		Enumeration<String> names = request.getParameterNames();
+		String element = names.nextElement();
+		
+		JSONObject object = JSON.parseObject(element);
+		
+		String userName = object.getString("userName");
+		String passWord = object.getString("passWord");
+		String ip = object.getString("ip");
+		String remortAddress = object.getString("remortAddress");
 		System.out.println("userName:" + userName);
 		System.out.println("passWord:" + passWord);
 		System.out.println("ip:" + ip);

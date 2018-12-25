@@ -1,14 +1,23 @@
 package com.author.pool;
 
 import java.sql.SQLException;
+import java.util.Properties;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
-import com.mysql.cj.jdbc.Driver;
+import com.author.util.PropertiesUtils;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 public class DataSourceConnection {
 	
-	private static DataSourceConnection dataSourceConnection = null;
+	/**
+	 * volatile 作用 
+	 * 1）保证了不同线程对这个变量进行操作时的可见性，即一个线程修改了某个变量的值，这新值对其他线程来说是立即可见的。
+	 * 2）禁止进行指令重排序。
+	 */
+	private static volatile DataSourceConnection dataSourceConnection;
 	
 	private static DruidDataSource druidDataSource = null;
 	
@@ -24,19 +33,30 @@ public class DataSourceConnection {
 		
 	}
 	
-	public static synchronized DataSourceConnection getInstance() {
+	public static DataSourceConnection getInstance() {
 		if (null == dataSourceConnection) {
-			dataSourceConnection = new DataSourceConnection();
+			synchronized(DataSourceConnection.class) {
+				if (null == dataSourceConnection) {
+					dataSourceConnection = new DataSourceConnection();
+				}
+			}
 		}
 		return dataSourceConnection;
 	}
 	
 	public static DruidDataSource druidDataSource() throws SQLException {
+		log.info("获取数据库连接");
 		DruidDataSource druidDataSource = new DruidDataSource();
-		druidDataSource.setDriver(new Driver());
-		druidDataSource.setUrl("jdbc:mysql://localhost:3306/primarydb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Hongkong");
-		druidDataSource.setUsername("primarys");
-		druidDataSource.setPassword("primarys");
+		Properties properties = PropertiesUtils.getProperties();
+		String jdbcUrl = properties.getProperty("datasource.jdbc_url");
+		String username = properties.getProperty("datasource.username");
+		String password = properties.getProperty("datasource.password");
+		String driverClassName = properties.getProperty("datasource.driver-class-name");
+		
+		druidDataSource.setDriverClassName(driverClassName);
+		druidDataSource.setUrl(jdbcUrl);
+		druidDataSource.setUsername(username);
+		druidDataSource.setPassword(password);
 		druidDataSource.setInitialSize(1);
 		druidDataSource.setMinIdle(1);
 		druidDataSource.setMaxActive(10);
@@ -54,7 +74,7 @@ public class DataSourceConnection {
 		return druidDataSource;
 	}
 	
-	public DruidPooledConnection getConnection() throws SQLException {
+	public synchronized DruidPooledConnection getConnection() throws SQLException {
 		return druidDataSource.getConnection();
 	}
 	

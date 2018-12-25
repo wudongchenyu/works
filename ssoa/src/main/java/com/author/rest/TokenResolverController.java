@@ -2,6 +2,7 @@ package com.author.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.author.po.LoginUser;
 import com.author.service.LoginService;
 import com.author.util.Result;
@@ -68,7 +70,15 @@ public class TokenResolverController extends HttpServlet {
 		System.out.println("调用/basic/token/resolver");
 		
 		String token = request.getParameter("token");
-		System.out.println("token:" + token);
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
+			Enumeration<String> names = request.getParameterNames();
+			String element = names.nextElement();
+			
+			JSONObject object = JSON.parseObject(element);
+			
+			token = object.getString("token");
+		}
 		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");

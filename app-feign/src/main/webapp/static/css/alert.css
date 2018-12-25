@@ -1,0 +1,37 @@
+@charset "UTF-8";
+.alert {
+    display: none;
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    min-width: 135px;
+    margin-left: -100px;
+    z-index: 99999;
+    padding: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: rgb(255, 255, 255);
+    background-color: rgba(88,105,120,.9);
+    border-color: #d6e9c6;
+}
+
+.alert-info {
+    color: rgb(255, 255, 255);
+    background-color: rgba(88,105,120,.9);
+    border-color: #bce8f1;
+}
+
+.alert-warning {
+    color: rgb(255, 255, 255);
+    background-color: rgba(88,105,120,.9);
+    border-color: #faebcc;
+}
+
+.alert-danger {
+    color: rgb(255, 255, 255);
+    background-color: rgba(88,105,120,.9);
+    border-color: #ebccd1;
+}

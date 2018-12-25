@@ -6,5 +6,5 @@
  *
  */
 module mymodel {
-	requires jdk.incubator.httpclient;
+	requires java.net.http;
 }

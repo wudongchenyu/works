@@ -25,8 +25,8 @@ public class UserAuthority implements Serializable{
 	private static final long serialVersionUID = 3058375372817669802L;
 
 	@Id
-	@GenericGenerator(name = "user-authority-uuid", strategy = "uuid")
-	@GeneratedValue(generator = "user-authority-uuid")
+	@GenericGenerator(name = "user_authority_uuid", strategy = "uuid")
+	@GeneratedValue(generator = "user_authority_uuid")
 	@Description(value = "主键")
 	@Column(nullable = false, unique = true)
 	private String id;

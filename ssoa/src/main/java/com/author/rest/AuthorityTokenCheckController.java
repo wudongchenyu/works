@@ -2,6 +2,7 @@ package com.author.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.author.service.LoginService;
 import com.author.util.Result;
 import com.author.util.ResultEnum;
@@ -66,12 +68,27 @@ public class AuthorityTokenCheckController extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("调用/basic/authority/token/check");
 		
-		String token = request.getParameter("authorityToken");
-		System.out.println("token:" + token);
-		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
+		
+		String token = request.getParameter("authorityToken");
+		if (null == token) {
+			Enumeration<String> names = request.getParameterNames();
+			if (!names.hasMoreElements()) {
+				out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
+			    out.flush();
+			    out.close();
+			    return;
+			}
+			String element = names.nextElement();
+			JSONObject object = JSON.parseObject(element);
+			
+			if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
+				token = object.getString("authorityToken");
+			}
+		}
+		
 		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
 			out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
 		    out.flush();

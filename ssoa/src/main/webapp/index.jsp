@@ -2,6 +2,11 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String scheme = request.getScheme();
+if(scheme.indexOf("https") == -1){
+	scheme = "https";
+}
+String baseHttpsPath = scheme+"://"+request.getServerName()+path+"/";
 %>
 
 <!DOCTYPE HTML>

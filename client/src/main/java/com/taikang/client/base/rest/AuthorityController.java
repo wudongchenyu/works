@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
@@ -34,12 +35,30 @@ public class AuthorityController {
 	
 	@ApiOperation(value = "添加权限信息", notes = "添加权限信息")
 	@ApiImplicitParams(value = {
-			@ApiImplicitParam(name = "authorityName", value = "名称", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "subordinate", value = "所属", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "authorityUrl", value = "URL", required = true, dataType = "String") })
+			@ApiImplicitParam(name = "authorityName", value = "权限名称", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "authorityUrl", value = "权限URL", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "authorityType", value = "权限类型", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "subordinateSystem", value = "权限所属系统", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "subordinateApp", value = "权限所属应用", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "subordinateModule", value = "权限所属模块", dataType = "String"),
+			@ApiImplicitParam(name = "channel", value = "权限访问渠道", dataType = "String") })
 	@PostMapping("/add")
-	public Result<Authority> add(String authorityName, String subordinate, String authorityUrl) {
-		Result<Authority> result = authorityService.add(authorityName, subordinate, authorityUrl);
+	public Result<Authority> add(
+			@RequestParam(name="authorityName",required=true)String authorityName, 
+			@RequestParam(name="authorityUrl",required=true)String authorityUrl, 
+			@RequestParam(name="authorityType",required=true)String authorityType, 
+			@RequestParam(name="subordinateSystem",required=true)String subordinateSystem,
+			@RequestParam(name="subordinateApp",required=true)String subordinateApp, 
+			@RequestParam(name="subordinateModule",required=false)String subordinateModule,
+			@RequestParam(name="channel",required=false)String channel) {
+		Result<Authority> result = authorityService.add(
+				authorityName, 
+				authorityUrl, 
+				authorityType, 
+				subordinateSystem, 
+				subordinateApp, 
+				subordinateModule, 
+				channel);
 		return result;
 	}
 
@@ -53,12 +72,31 @@ public class AuthorityController {
 
 	@ApiOperation(value = "添加权限信息", notes = "添加权限信息")
 	@ApiImplicitParams(value = { @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "authorityName", value = "名称", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "subordinate", value = "所属", required = true, dataType = "String"),
-			@ApiImplicitParam(name = "authorityUrl", value = "URL", required = true, dataType = "String") })
+			@ApiImplicitParam(name = "authorityName", value = "权限名称", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "authorityUrl", value = "权限URL", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "authorityType", value = "权限类型", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "subordinateSystem", value = "权限所属系统", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "subordinateApp", value = "权限所属应用", required = true, dataType = "String"),
+			@ApiImplicitParam(name = "subordinateModule", value = "权限所属模块", dataType = "String"),
+			@ApiImplicitParam(name = "channel", value = "权限访问渠道", dataType = "String")  })
 	@PostMapping("/edit")
-	public Result<Authority> edit(String id, String authorityName, String subordinate, String authorityUrl) {
-		Result<Authority> result = authorityService.edit(id, authorityName, subordinate, authorityUrl);
+	public Result<Authority> edit(
+			@RequestParam(name="id",required=true)String id, 
+			@RequestParam(name="authorityName",required=true)String authorityName, 
+			@RequestParam(name="authorityUrl",required=true)String authorityUrl, 
+			@RequestParam(name="authorityType",required=true)String authorityType, 
+			@RequestParam(name="subordinateSystem",required=true)String subordinateSystem,
+			@RequestParam(name="subordinateApp",required=true)String subordinateApp, 
+			@RequestParam(name="subordinateModule",required=true)String subordinateModule,
+			@RequestParam(name="channel",required=true)String channel) {
+		Result<Authority> result = authorityService.edit(
+				id, authorityName, 
+				authorityUrl, 
+				authorityType, 
+				subordinateSystem, 
+				subordinateApp, 
+				subordinateModule, 
+				channel);
 		return result;
 	}
 

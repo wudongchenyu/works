@@ -2,6 +2,7 @@ package com.author.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,15 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.author.service.LoginService;
 import com.author.util.Result;
 import com.author.util.ResultEnum;
 import com.author.util.ResultUtils;
 import com.mysql.cj.util.StringUtils;
 
-import jdk.jfr.Description;
-
-@Description(value = "注销权限token")
+//@Description(value = "注销权限token")
 @WebServlet(value = "/basic/authority/token/cancel" ,name = "AuthorityTokenCancelController")
 public class AuthorityTokenCancelController extends HttpServlet {
 	
@@ -75,6 +75,23 @@ public class AuthorityTokenCancelController extends HttpServlet {
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
+	    
+		if (null == token) {
+			Enumeration<String> names = request.getParameterNames();
+			if (!names.hasMoreElements()) {
+				out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
+			    out.flush();
+			    out.close();
+			    return;
+			}
+			String element = names.nextElement();
+			JSONObject object = JSON.parseObject(element);
+			
+			if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
+				token = object.getString("authorityToken");
+			}
+		}
+		
 		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
 			out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
 		    out.flush();

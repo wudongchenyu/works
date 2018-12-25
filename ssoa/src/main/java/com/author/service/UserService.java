@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ import com.mysql.cj.util.StringUtils;
 
 public class UserService {
 	
-	private static UserService userService;
+	private static volatile UserService userService;
 	
 	private UserService() {
 		
@@ -59,7 +60,7 @@ public class UserService {
 			statement.setString(7, user.getCoi());
 			statement.setBoolean(8, user.isEnabled());
 			statement.setBoolean(9, user.isCredentialsNonExpired());
-			statement.setDate(10, new Date(user.getCreateTime().getTime()));
+			statement.setTimestamp(10, new Timestamp(user.getCreateTime().getTime()));
 			statement.setBoolean(11, user.isAccountNonLocked());
 			statement.setBoolean(12, user.isAccountNonExpired());
 			statement.executeUpdate();
@@ -125,7 +126,7 @@ public class UserService {
 			User user = new User();
 			if (rs.next()) {
 				user.setId(rs.getString("id"));
-				user.setCreateTime(rs.getDate("create_time"));
+				user.setCreateTime(rs.getTimestamp("create_time"));
 				user.setEnabled(rs.getBoolean("enabled"));
 				user.setAccountNonExpired(rs.getBoolean("credentials_non_expired"));
 				user.setAccountNonLocked(rs.getBoolean("account_non_locked"));
@@ -193,7 +194,7 @@ public class UserService {
 			while (rs.next()) {
 				User user = new User();
 				user.setId(rs.getString("id"));
-				user.setCreateTime(rs.getDate("create_time"));
+				user.setCreateTime(rs.getTimestamp("create_time"));
 				user.setEnabled(rs.getBoolean("enabled"));
 				user.setAccountNonExpired(rs.getBoolean("credentials_non_expired"));
 				user.setAccountNonLocked(rs.getBoolean("account_non_locked"));
@@ -251,7 +252,7 @@ public class UserService {
 			User user = new User();
 			if (rs.next()) {
 				user.setId(rs.getString("id"));
-				user.setCreateTime(rs.getDate("create_time"));
+				user.setCreateTime(rs.getTimestamp("create_time"));
 				user.setEnabled(rs.getBoolean("enabled"));
 				user.setAccountNonExpired(rs.getBoolean("credentials_non_expired"));
 				user.setAccountNonLocked(rs.getBoolean("account_non_locked"));

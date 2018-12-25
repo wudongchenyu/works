@@ -17,6 +17,9 @@ import com.author.util.ResultEnum;
 import com.author.util.ResultUtils;
 import com.mysql.cj.util.StringUtils;
 
+import lombok.extern.log4j.Log4j2;
+
+@Log4j2
 @WebServlet(value = "/basic/login" ,name = "LoginController")
 public class LoginController extends HttpServlet {
 	
@@ -65,17 +68,19 @@ public class LoginController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doPost");
-		
-		String userName = request.getParameter("userName");
-		String passWord = request.getParameter("passWord");
-		String fromUrl = request.getParameter("fromUrl");
-		System.out.println("userName:" + userName);
-		System.out.println("passWord:" + passWord);
-		System.out.println("ip:" + fromUrl);
+		log.info("调用doPost");
+		log.info("开始获取参数：" + System.nanoTime());
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
+		String userName = request.getParameter("userName");
+		String passWord = request.getParameter("passWord");
+		String fromUrl = request.getParameter("fromUrl");
+		log.info("获取参数成功：" + System.nanoTime());
+		log.info("userName:" + userName);
+		log.info("passWord:" + passWord);
+		log.info("ip:" + fromUrl);
+		
 		if (StringUtils.isEmptyOrWhitespaceOnly(userName)) {
 			out.println(ResultUtils.success(ResultEnum.USER_ADN_PASS_NULL_ERROR));
 		    out.flush();
@@ -89,7 +94,11 @@ public class LoginController extends HttpServlet {
 		    out.close();
 		    return;
 		}
+		log.info("参数验证结束：" + System.nanoTime());
 		Result<JSONObject> result = loginService.login(userName, passWord, fromUrl);
+		if (null == result.getData()) {
+			result.setData(new JSONObject());
+		}
 		result.getData().put("fromUrl", fromUrl);
 	    out.println(JSON.toJSONString(result));
 	    out.flush();

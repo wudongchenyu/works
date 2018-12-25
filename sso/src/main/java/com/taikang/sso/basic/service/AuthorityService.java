@@ -1,5 +1,6 @@
 package com.taikang.sso.basic.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +24,23 @@ public class AuthorityService {
 	private @Autowired AuthorityRepository authorityRepository;
 	
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Result<Authority> add(String authorityName, String subordinate, String authorityUrl) {
+	public Result<Authority> add(
+			String authorityName, 
+			String authorityUrl, 
+			String authorityType, 
+			String subordinateSystem, 
+			String subordinateApp, 
+			String subordinateModule, 
+			String channel) {
 		try {
 			Authority authority = new Authority();
 			authority.setAuthorityName(authorityName);
 			authority.setAuthorityUrl(authorityUrl);
-			authority.setSubordinate(subordinate);
+			authority.setAuthorityType(authorityType);
+			authority.setChannel(channel);
+			authority.setSubordinateApp(subordinateApp);
+			authority.setSubordinateModule(subordinateModule);
+			authority.setSubordinateSystem(subordinateSystem);
 			Authority save = authorityRepository.save(authority);
 			return ResultUtils.success(ResultEnum.SAVE_PERMISSION_SUCCESS, save);
 		} catch (Exception e) {
@@ -56,7 +68,15 @@ public class AuthorityService {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Result<Authority> edit(String id, String authorityName, String subordinate, String authorityUrl) {
+	public Result<Authority> edit(
+			String id, 
+			String authorityName, 
+			String authorityUrl, 
+			String authorityType, 
+			String subordinateSystem, 
+			String subordinateApp, 
+			String subordinateModule, 
+			String channel) {
 		try {
 			Authority authority = authorityRepository.findById(id);
 			if (null == authority) {
@@ -64,7 +84,12 @@ public class AuthorityService {
 			}
 			authority.setAuthorityName(authorityName);
 			authority.setAuthorityUrl(authorityUrl);
-			authority.setSubordinate(subordinate);
+			authority.setAuthorityType(authorityType);
+			authority.setChannel(channel);
+			authority.setSubordinateApp(subordinateApp);
+			authority.setSubordinateModule(subordinateModule);
+			authority.setSubordinateSystem(subordinateSystem);
+			authority.setUpdateTime(new Date());
 			authorityRepository.save(authority);
 			return ResultUtils.success(ResultEnum.EDIT_AUTHORITY_SUCCESS);
 		} catch (Exception e) {

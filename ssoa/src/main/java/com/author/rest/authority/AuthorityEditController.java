@@ -70,8 +70,12 @@ public class AuthorityEditController extends HttpServlet {
 		
 		String id = request.getParameter("id");
 		String authorityName = request.getParameter("authorityName");
-		String subordinate = request.getParameter("subordinate");
 		String authorityUrl = request.getParameter("authorityUrl");
+		String authorityType = request.getParameter("authorityType");
+		String subordinateSystem = request.getParameter("subordinateSystem");
+		String subordinateApp = request.getParameter("subordinateApp");
+		String subordinateModule = request.getParameter("subordinateModule");
+		String channel = request.getParameter("channel");
 		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
@@ -91,8 +95,8 @@ public class AuthorityEditController extends HttpServlet {
 		    return;
 		}
 		
-		if (StringUtils.isEmptyOrWhitespaceOnly(subordinate)) {
-			out.println(ResultUtils.paramError(ResultEnum.SUBORDINATE_NULL_ERROR));
+		if (StringUtils.isEmptyOrWhitespaceOnly(authorityType)) {
+			out.println(ResultUtils.paramError(ResultEnum.AUTHORITY_TYPE_NULL_ERROR));
 		    out.flush();
 		    out.close();
 		    return;
@@ -105,7 +109,28 @@ public class AuthorityEditController extends HttpServlet {
 		    return;
 		}
 		
-		Result<Authority> result = authorityService.editAuthority(id, authorityName, subordinate, authorityUrl);
+		if (StringUtils.isEmptyOrWhitespaceOnly(subordinateSystem)) {
+			out.println(ResultUtils.paramError(ResultEnum.AUTHORITY_SUBORDINATE_SYSTEM_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		if (StringUtils.isEmptyOrWhitespaceOnly(subordinateApp)) {
+			out.println(ResultUtils.paramError(ResultEnum.AUTHORITY_SUBORDINATE_APP_NULL_ERROR));
+		    out.flush();
+		    out.close();
+		    return;
+		}
+		
+		Result<Authority> result = authorityService.editAuthority(
+				id, authorityName, 
+				authorityUrl, 
+				authorityType, 
+				subordinateSystem, 
+				subordinateApp, 
+				subordinateModule, 
+				channel);
 		
 	    out.println(JSON.toJSONString(result));
 	    out.flush();

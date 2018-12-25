@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.pool.DruidPooledConnection;
-import com.mysql.cj.jdbc.Driver;
+import com.taikang.sso.basic.util.PropertiesLoader;
 
 public class DataSourceConnection {
 	
@@ -33,10 +33,16 @@ public class DataSourceConnection {
 	
 	public static DruidDataSource druidDataSource() throws SQLException {
 		DruidDataSource druidDataSource = new DruidDataSource();
-		druidDataSource.setDriver(new Driver());
-		druidDataSource.setUrl("jdbc:mysql://localhost:3306/primarydb?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Hongkong");
-		druidDataSource.setUsername("primarys");
-		druidDataSource.setPassword("primarys");
+		PropertiesLoader loader = new PropertiesLoader("/sso.properties");
+		String jdbcUrl = loader.getProperty("datasource.jdbc_url");
+		String username = loader.getProperty("datasource.username");
+		String password = loader.getProperty("datasource.password");
+		String driverClassName = loader.getProperty("datasource.driver-class-name");
+		
+		druidDataSource.setDriverClassName(driverClassName);
+		druidDataSource.setUrl(jdbcUrl);
+		druidDataSource.setUsername(username);
+		druidDataSource.setPassword(password);
 		druidDataSource.setInitialSize(1);
 		druidDataSource.setMinIdle(1);
 		druidDataSource.setMaxActive(10);

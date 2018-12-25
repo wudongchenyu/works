@@ -51,23 +51,7 @@ public class AuthoritySearchListController extends HttpServlet {
 		 * @throws IOException if an error occurred
 		 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("调用doGet");
-		
-		String userId = request.getParameter("userId");
-		String id = request.getParameter("id");
-		String authorityUrl = request.getParameter("authorityUrl");
-		String authorityName = request.getParameter("authorityName");
-		String subordinate = request.getParameter("subordinate");
-		
-		response.setContentType("application/json;charset=UTF-8");
-	    response.setCharacterEncoding("UTF-8");
-	    PrintWriter out = response.getWriter();
-		
-		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityUrl, authorityName, subordinate);
-		
-	    out.println(JSON.toJSONString(result));
-	    out.flush();
-	    out.close();
+		this.doPost(request, response);
 	}
 
 	/**
@@ -85,15 +69,27 @@ public class AuthoritySearchListController extends HttpServlet {
 		
 		String userId = request.getParameter("userId");
 		String id = request.getParameter("id");
-		String authorityCode = request.getParameter("authorityCode");
 		String authorityName = request.getParameter("authorityName");
-		String enabled = request.getParameter("enabled");
+		String authorityUrl = request.getParameter("authorityUrl");
+		String authorityType = request.getParameter("authorityType");
+		String subordinateSystem = request.getParameter("subordinateSystem");
+		String subordinateApp = request.getParameter("subordinateApp");
+		String subordinateModule = request.getParameter("subordinateModule");
+		String channel = request.getParameter("channel");
 		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
 		
-		Result<List<Authority>> result = authorityService.getAllAuthority(userId, id, authorityCode, authorityName, enabled);
+		Result<List<Authority>> result = authorityService.getAllAuthority(
+				userId, id,
+				authorityName, 
+				authorityUrl, 
+				authorityType, 
+				subordinateSystem, 
+				subordinateApp, 
+				subordinateModule, 
+				channel);
 		
 	    out.println(JSON.toJSONString(result));
 	    out.flush();

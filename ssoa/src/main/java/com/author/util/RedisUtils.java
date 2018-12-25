@@ -11,7 +11,7 @@ public class RedisUtils {
 	}
 	
 	public static void closeJedis(Jedis jedis) {
-		jedis.close();
+		RedisConnection.getInstance().returnResource(jedis);
 	}
-
+	
 }

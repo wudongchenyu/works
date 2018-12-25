@@ -26,8 +26,8 @@ public class User implements Serializable{
 	private static final long serialVersionUID = -5143951884356117635L;
 
 	@Id
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system_uuid", strategy = "uuid")
+	@GeneratedValue(generator = "system_uuid")
 	@Description(value = "主键")
 	@Column(nullable = false, unique = true)
 	private String id;
@@ -62,6 +62,12 @@ public class User implements Serializable{
 	@Column(name = "create_time", nullable = false)
 	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
 	private Date createTime = new Date();
+	
+	@Description(value = "修改时间")
+	@Temporal(value = TemporalType.TIMESTAMP)
+	@Column(name = "update_time", nullable = false)
+	@JSONField(format = "yyyy-MM-dd HH:mm:ss")
+	private Date updateTime = new Date();
 	
 	@Column(name = "account_non_expired")
 	@Description(value = "用户是否过期")

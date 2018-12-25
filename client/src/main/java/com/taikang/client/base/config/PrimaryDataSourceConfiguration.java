@@ -37,6 +37,11 @@ public class PrimaryDataSourceConfiguration {
 	private DataSource primaryDataSource;
 	
 	public @Bean @Primary LocalContainerEntityManagerFactoryBean entityManagerFactoryPrimary(EntityManagerFactoryBuilder builder) {
+		Map<String, ?> map = getVendorPrpperties();
+		
+		map.keySet().forEach(key->{
+			System.out.println(key + ":" + map.get(key));
+		});
 		
 		return builder.dataSource(primaryDataSource)
 				.properties(getVendorPrpperties())
@@ -54,6 +59,7 @@ public class PrimaryDataSourceConfiguration {
 	}
 
 	private Map<String, ?> getVendorPrpperties() {
+//		return jpaProperties.getHibernateProperties(new HibernateSettings());
 		return jpaProperties.getProperties();
 	}
 

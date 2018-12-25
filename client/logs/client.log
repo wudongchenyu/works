@@ -1,0 +1,728 @@
+2018-12-05 14:02:26.080  INFO 17184 --- [main] com.taikang.client.ClientApplication     : The following profiles are active: dev
+2018-12-05 14:02:26.102  INFO 17184 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@76b74e9c: startup date [Wed Dec 05 14:02:26 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@3fc79729
+2018-12-05 14:02:26.978  INFO 17184 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:02:27.184  INFO 17184 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:02:27.301  INFO 17184 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=myMvcConfig; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/taikang/client/base/config/MyMvcConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-12-05 14:02:27.404  INFO 17184 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:02:27.417  INFO 17184 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.taikang.client.base.dto.jpa.AuthorityPrimaryRepository.
+2018-12-05 14:02:27.840  INFO 17184 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=53899e05-85b2-3883-9fa1-5d110a958b77
+2018-12-05 14:02:27.869  INFO 17184 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'ssoTokenFilter' with a different definition: replacing [Generic bean: class [com.taikang.client.base.filter.SsoTokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [D:\development\works\client\target\classes\com\taikang\client\base\filter\SsoTokenFilter.class]] with [Root bean: class [org.springframework.boot.web.servlet.FilterRegistrationBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-12-05 14:02:27.876  INFO 17184 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:02:27.997  INFO 17184 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6ea8a107] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:02:28.053  INFO 17184 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$8ac2a404] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:02:28.876  INFO 17184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2018-12-05 14:02:28.911  INFO 17184 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-05 14:02:28.912  INFO 17184 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-12-05 14:02:28.926  INFO 17184 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2018-12-05 14:02:28.927  INFO 17184 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2018-12-05 14:02:28.928  INFO 17184 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2018-12-05 14:02:30.037  INFO 17184 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2018-12-05 14:02:30.425  INFO 17184 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-12-05 14:02:30.435  INFO 17184 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-05 14:02:30.435  INFO 17184 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4333 ms
+2018-12-05 14:02:30.496  INFO 17184 --- [localhost-startStop-1] s.c.a.AnnotationConfigApplicationContext : Refreshing FeignContext-sso: startup date [Wed Dec 05 14:02:30 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@76b74e9c
+2018-12-05 14:02:30.521  INFO 17184 --- [localhost-startStop-1] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:02:30.804  INFO 17184 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-05 14:02:30.805  INFO 17184 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-05 14:02:30.805  INFO 17184 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-05 14:02:30.805  INFO 17184 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-05 14:02:30.805  INFO 17184 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'ssoTokenFilter' to urls: [/api/*]
+2018-12-05 14:02:30.805  INFO 17184 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-05 14:02:31.083  INFO 17184 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-05 14:02:31.282  INFO 17184 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-05 14:02:31.328  INFO 17184 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'primaryPersistenceUnit'
+2018-12-05 14:02:31.350  INFO 17184 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: primaryPersistenceUnit
+	...]
+2018-12-05 14:02:31.452  INFO 17184 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-12-05 14:02:31.455  INFO 17184 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-05 14:02:31.506  INFO 17184 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-12-05 14:02:31.653  INFO 17184 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-12-05 14:02:31.909  WARN 17184 --- [main] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2018-12-05 14:02:32.241  WARN 17184 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryPrimary' defined in class path resource [com/taikang/client/base/config/PrimaryDataSourceConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+2018-12-05 14:02:32.242  INFO 17184 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-05 14:02:32.253  INFO 17184 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-05 14:02:32.254  INFO 17184 --- [main] s.c.a.AnnotationConfigApplicationContext : Closing FeignContext-sso: startup date [Wed Dec 05 14:02:30 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@76b74e9c
+2018-12-05 14:02:32.258  INFO 17184 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-05 14:02:32.275  INFO 17184 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-05 14:02:32.281 ERROR 17184 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryPrimary' defined in class path resource [com/taikang/client/base/config/PrimaryDataSourceConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1694) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1087) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:548) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at com.taikang.client.ClientApplication.main(ClientApplication.java:16) ~[classes/:na]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1753) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1690) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	... 16 common frames omitted
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:123) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:77) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.metamodel.internal.MetamodelImpl.initialize(MetamodelImpl.java:129) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:300) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:462) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:892) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	... 20 common frames omitted
+Caused by: org.hibernate.HibernateException: Unable to instantiate default tuplizer [org.hibernate.tuple.entity.PojoEntityTuplizer]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:91) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructDefaultTuplizer(EntityTuplizerFactory.java:116) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:382) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:519) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:124) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:96) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 28 common frames omitted
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:88) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 37 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at javassist.util.proxy.SecurityActions.setAccessible(SecurityActions.java:103) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass3(DefineClassHelper.java:151) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass2(DefineClassHelper.java:134) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass(DefineClassHelper.java:95) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.FactoryHelper.toClass(FactoryHelper.java:131) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass3(ProxyFactory.java:530) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass2(ProxyFactory.java:515) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass1(ProxyFactory.java:451) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass(ProxyFactory.java:422) ~[javassist-3.22.0-GA.jar:na]
+	at org.hibernate.proxy.pojo.javassist.JavassistProxyFactory.postInstantiate(JavassistProxyFactory.java:75) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildProxyFactory(PojoEntityTuplizer.java:162) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.<init>(AbstractEntityTuplizer.java:156) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.<init>(PojoEntityTuplizer.java:58) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 42 common frames omitted
+
+2018-12-05 14:09:38.690  INFO 2324 --- [main] com.taikang.client.ClientApplication     : The following profiles are active: dev
+2018-12-05 14:09:38.710  INFO 2324 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e: startup date [Wed Dec 05 14:09:38 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@14008db3
+2018-12-05 14:09:39.694  INFO 2324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:09:39.892  INFO 2324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:09:40.044  INFO 2324 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=myMvcConfig; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/taikang/client/base/config/MyMvcConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-12-05 14:09:40.143  INFO 2324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:09:40.157  INFO 2324 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.taikang.client.base.dto.jpa.AuthorityPrimaryRepository.
+2018-12-05 14:09:40.612  INFO 2324 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=53899e05-85b2-3883-9fa1-5d110a958b77
+2018-12-05 14:09:40.644  INFO 2324 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'ssoTokenFilter' with a different definition: replacing [Generic bean: class [com.taikang.client.base.filter.SsoTokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [D:\development\works\client\target\classes\com\taikang\client\base\filter\SsoTokenFilter.class]] with [Root bean: class [org.springframework.boot.web.servlet.FilterRegistrationBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-12-05 14:09:40.653  INFO 2324 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:09:40.779  INFO 2324 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1617c84b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:09:40.831  INFO 2324 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$3231cb48] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:13:25.042  INFO 6304 --- [main] com.taikang.client.ClientApplication     : The following profiles are active: dev
+2018-12-05 14:13:25.060  INFO 6304 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e: startup date [Wed Dec 05 14:13:25 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@14008db3
+2018-12-05 14:13:25.961  INFO 6304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:13:26.153  INFO 6304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:13:26.272  INFO 6304 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=myMvcConfig; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/taikang/client/base/config/MyMvcConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-12-05 14:13:26.378  INFO 6304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:13:26.391  INFO 6304 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.taikang.client.base.dto.jpa.AuthorityPrimaryRepository.
+2018-12-05 14:13:26.799  INFO 6304 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=53899e05-85b2-3883-9fa1-5d110a958b77
+2018-12-05 14:13:26.827  INFO 6304 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'ssoTokenFilter' with a different definition: replacing [Generic bean: class [com.taikang.client.base.filter.SsoTokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [D:\development\works\client\target\classes\com\taikang\client\base\filter\SsoTokenFilter.class]] with [Root bean: class [org.springframework.boot.web.servlet.FilterRegistrationBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-12-05 14:13:26.833  INFO 6304 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:13:26.971  INFO 6304 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1617c84b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:13:27.037  INFO 6304 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$3231cb48] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:13:27.782  INFO 6304 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2018-12-05 14:13:27.838  INFO 6304 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-05 14:13:27.839  INFO 6304 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-12-05 14:13:27.853  INFO 6304 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2018-12-05 14:13:27.855  INFO 6304 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2018-12-05 14:13:27.855  INFO 6304 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2018-12-05 14:13:28.955  INFO 6304 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2018-12-05 14:13:29.363  INFO 6304 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-12-05 14:13:29.373  INFO 6304 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-05 14:13:29.373  INFO 6304 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4313 ms
+2018-12-05 14:13:29.441  INFO 6304 --- [localhost-startStop-1] s.c.a.AnnotationConfigApplicationContext : Refreshing FeignContext-sso: startup date [Wed Dec 05 14:13:29 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e
+2018-12-05 14:13:29.468  INFO 6304 --- [localhost-startStop-1] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:13:29.781  INFO 6304 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-05 14:13:29.782  INFO 6304 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-05 14:13:29.782  INFO 6304 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-05 14:13:29.782  INFO 6304 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-05 14:13:29.782  INFO 6304 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'ssoTokenFilter' to urls: [/api/*]
+2018-12-05 14:13:29.783  INFO 6304 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-05 14:13:30.050  INFO 6304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-05 14:13:30.246  INFO 6304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-05 14:13:30.300  INFO 6304 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'primaryPersistenceUnit'
+2018-12-05 14:13:30.325  INFO 6304 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: primaryPersistenceUnit
+	...]
+2018-12-05 14:13:30.450  INFO 6304 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-12-05 14:13:30.452  INFO 6304 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-05 14:13:30.501  INFO 6304 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-12-05 14:13:30.652  INFO 6304 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-12-05 14:13:30.896  WARN 6304 --- [main] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2018-12-05 14:13:31.153  WARN 6304 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryPrimary' defined in class path resource [com/taikang/client/base/config/PrimaryDataSourceConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+2018-12-05 14:13:31.153  INFO 6304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-05 14:13:31.164  INFO 6304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-05 14:13:31.165  INFO 6304 --- [main] s.c.a.AnnotationConfigApplicationContext : Closing FeignContext-sso: startup date [Wed Dec 05 14:13:29 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e
+2018-12-05 14:13:31.168  INFO 6304 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-05 14:13:31.188  INFO 6304 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-05 14:13:31.195 ERROR 6304 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryPrimary' defined in class path resource [com/taikang/client/base/config/PrimaryDataSourceConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1694) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1087) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:548) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at com.taikang.client.ClientApplication.main(ClientApplication.java:16) ~[classes/:na]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1753) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1690) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	... 16 common frames omitted
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:123) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:77) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.metamodel.internal.MetamodelImpl.initialize(MetamodelImpl.java:129) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:300) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:462) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:892) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	... 20 common frames omitted
+Caused by: org.hibernate.HibernateException: Unable to instantiate default tuplizer [org.hibernate.tuple.entity.PojoEntityTuplizer]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:91) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructDefaultTuplizer(EntityTuplizerFactory.java:116) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:382) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:519) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:124) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:96) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 28 common frames omitted
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:88) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 37 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at javassist.util.proxy.SecurityActions.setAccessible(SecurityActions.java:103) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass3(DefineClassHelper.java:151) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass2(DefineClassHelper.java:134) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass(DefineClassHelper.java:95) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.FactoryHelper.toClass(FactoryHelper.java:131) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass3(ProxyFactory.java:530) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass2(ProxyFactory.java:515) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass1(ProxyFactory.java:451) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass(ProxyFactory.java:422) ~[javassist-3.22.0-GA.jar:na]
+	at org.hibernate.proxy.pojo.javassist.JavassistProxyFactory.postInstantiate(JavassistProxyFactory.java:75) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildProxyFactory(PojoEntityTuplizer.java:162) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.<init>(AbstractEntityTuplizer.java:156) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.<init>(PojoEntityTuplizer.java:58) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 42 common frames omitted
+
+2018-12-05 14:15:40.695  INFO 16840 --- [main] com.taikang.client.ClientApplication     : The following profiles are active: dev
+2018-12-05 14:15:40.716  INFO 16840 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e: startup date [Wed Dec 05 14:15:40 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@14008db3
+2018-12-05 14:15:41.613  INFO 16840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:15:41.789  INFO 16840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:15:41.891  INFO 16840 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=myMvcConfig; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/taikang/client/base/config/MyMvcConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-12-05 14:15:41.989  INFO 16840 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:15:42.002  INFO 16840 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.taikang.client.base.dto.jpa.AuthorityPrimaryRepository.
+2018-12-05 14:15:42.400  INFO 16840 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=53899e05-85b2-3883-9fa1-5d110a958b77
+2018-12-05 14:15:42.425  INFO 16840 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'ssoTokenFilter' with a different definition: replacing [Generic bean: class [com.taikang.client.base.filter.SsoTokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [D:\development\works\client\target\classes\com\taikang\client\base\filter\SsoTokenFilter.class]] with [Root bean: class [org.springframework.boot.web.servlet.FilterRegistrationBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-12-05 14:15:42.432  INFO 16840 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:15:42.555  INFO 16840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1617c84b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:15:42.609  INFO 16840 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$3231cb48] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:15:43.354  INFO 16840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2018-12-05 14:15:43.394  INFO 16840 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-05 14:15:43.395  INFO 16840 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-12-05 14:15:43.409  INFO 16840 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2018-12-05 14:15:43.411  INFO 16840 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2018-12-05 14:15:43.412  INFO 16840 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2018-12-05 14:15:44.487  INFO 16840 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2018-12-05 14:15:44.917  INFO 16840 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-12-05 14:15:44.926  INFO 16840 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-05 14:15:44.927  INFO 16840 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4211 ms
+2018-12-05 14:15:44.986  INFO 16840 --- [localhost-startStop-1] s.c.a.AnnotationConfigApplicationContext : Refreshing FeignContext-sso: startup date [Wed Dec 05 14:15:44 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e
+2018-12-05 14:15:45.013  INFO 16840 --- [localhost-startStop-1] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:15:45.327  INFO 16840 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-05 14:15:45.328  INFO 16840 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-05 14:15:45.328  INFO 16840 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-05 14:15:45.328  INFO 16840 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-05 14:15:45.328  INFO 16840 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'ssoTokenFilter' to urls: [/api/*]
+2018-12-05 14:15:45.328  INFO 16840 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-05 14:15:45.599  INFO 16840 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-05 14:15:45.787  INFO 16840 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-05 14:15:45.841  INFO 16840 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'primaryPersistenceUnit'
+2018-12-05 14:15:45.862  INFO 16840 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: primaryPersistenceUnit
+	...]
+2018-12-05 14:15:45.974  INFO 16840 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-12-05 14:15:45.977  INFO 16840 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-05 14:15:46.031  INFO 16840 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-12-05 14:15:46.181  INFO 16840 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-12-05 14:15:46.417  WARN 16840 --- [main] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2018-12-05 14:15:46.718  WARN 16840 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryPrimary' defined in class path resource [com/taikang/client/base/config/PrimaryDataSourceConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+2018-12-05 14:15:46.718  INFO 16840 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-05 14:15:46.730  INFO 16840 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-05 14:15:46.731  INFO 16840 --- [main] s.c.a.AnnotationConfigApplicationContext : Closing FeignContext-sso: startup date [Wed Dec 05 14:15:44 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e
+2018-12-05 14:15:46.735  INFO 16840 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-05 14:15:46.765  INFO 16840 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-05 14:15:46.774 ERROR 16840 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryPrimary' defined in class path resource [com/taikang/client/base/config/PrimaryDataSourceConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1694) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1087) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:548) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at com.taikang.client.ClientApplication.main(ClientApplication.java:16) ~[classes/:na]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1753) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1690) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	... 16 common frames omitted
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:123) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:77) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.metamodel.internal.MetamodelImpl.initialize(MetamodelImpl.java:129) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:300) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:462) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:892) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	... 20 common frames omitted
+Caused by: org.hibernate.HibernateException: Unable to instantiate default tuplizer [org.hibernate.tuple.entity.PojoEntityTuplizer]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:91) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructDefaultTuplizer(EntityTuplizerFactory.java:116) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:382) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:519) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:124) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:96) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 28 common frames omitted
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:88) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 37 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at javassist.util.proxy.SecurityActions.setAccessible(SecurityActions.java:103) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass3(DefineClassHelper.java:151) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass2(DefineClassHelper.java:134) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass(DefineClassHelper.java:95) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.FactoryHelper.toClass(FactoryHelper.java:131) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass3(ProxyFactory.java:530) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass2(ProxyFactory.java:515) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass1(ProxyFactory.java:451) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass(ProxyFactory.java:422) ~[javassist-3.22.0-GA.jar:na]
+	at org.hibernate.proxy.pojo.javassist.JavassistProxyFactory.postInstantiate(JavassistProxyFactory.java:75) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildProxyFactory(PojoEntityTuplizer.java:162) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.<init>(AbstractEntityTuplizer.java:156) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.<init>(PojoEntityTuplizer.java:58) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 42 common frames omitted
+
+2018-12-05 14:21:41.456  INFO 16412 --- [main] com.taikang.client.ClientApplication     : The following profiles are active: dev
+2018-12-05 14:21:41.472  INFO 16412 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@8ab78bc: startup date [Wed Dec 05 14:21:41 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@4b34fff9
+2018-12-05 14:21:42.364  INFO 16412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:21:42.566  INFO 16412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:21:42.705  INFO 16412 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=myMvcConfig; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/taikang/client/base/config/MyMvcConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-12-05 14:21:42.821  INFO 16412 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:21:42.837  INFO 16412 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.taikang.client.base.dto.jpa.AuthorityPrimaryRepository.
+2018-12-05 14:21:43.259  INFO 16412 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=53899e05-85b2-3883-9fa1-5d110a958b77
+2018-12-05 14:21:43.290  INFO 16412 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'ssoTokenFilter' with a different definition: replacing [Generic bean: class [com.taikang.client.base.filter.SsoTokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [D:\development\works\client\target\classes\com\taikang\client\base\filter\SsoTokenFilter.class]] with [Root bean: class [org.springframework.boot.web.servlet.FilterRegistrationBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-12-05 14:21:43.299  INFO 16412 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:21:43.430  INFO 16412 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bb16fcf3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:21:43.479  INFO 16412 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$d730fff0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:21:44.200  INFO 16412 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2018-12-05 14:21:44.266  INFO 16412 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-05 14:21:44.267  INFO 16412 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-12-05 14:21:44.281  INFO 16412 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2018-12-05 14:21:44.283  INFO 16412 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2018-12-05 14:21:44.283  INFO 16412 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2018-12-05 14:21:45.362  INFO 16412 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2018-12-05 14:21:45.793  INFO 16412 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-12-05 14:21:45.805  INFO 16412 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-05 14:21:45.806  INFO 16412 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4334 ms
+2018-12-05 14:21:45.868  INFO 16412 --- [localhost-startStop-1] s.c.a.AnnotationConfigApplicationContext : Refreshing FeignContext-sso: startup date [Wed Dec 05 14:21:45 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@8ab78bc
+2018-12-05 14:21:45.893  INFO 16412 --- [localhost-startStop-1] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:21:46.191  INFO 16412 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-05 14:21:46.191  INFO 16412 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-05 14:21:46.192  INFO 16412 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-05 14:21:46.192  INFO 16412 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-05 14:21:46.192  INFO 16412 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'ssoTokenFilter' to urls: [/api/*]
+2018-12-05 14:21:46.192  INFO 16412 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-05 14:21:46.458  INFO 16412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-05 14:21:46.650  INFO 16412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-05 14:21:46.711  INFO 16412 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'primaryPersistenceUnit'
+2018-12-05 14:21:46.735  INFO 16412 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: primaryPersistenceUnit
+	...]
+2018-12-05 14:21:46.846  INFO 16412 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-12-05 14:21:46.849  INFO 16412 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-05 14:21:46.900  INFO 16412 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-12-05 14:21:47.066  INFO 16412 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-12-05 14:21:47.289  WARN 16412 --- [main] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2018-12-05 14:21:47.540  WARN 16412 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryPrimary' defined in class path resource [com/taikang/client/base/config/PrimaryDataSourceConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+2018-12-05 14:21:47.541  INFO 16412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2018-12-05 14:21:47.553  INFO 16412 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2018-12-05 14:21:47.554  INFO 16412 --- [main] s.c.a.AnnotationConfigApplicationContext : Closing FeignContext-sso: startup date [Wed Dec 05 14:21:45 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@8ab78bc
+2018-12-05 14:21:47.557  INFO 16412 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-12-05 14:21:47.596  INFO 16412 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2018-12-05 14:21:47.610 ERROR 16412 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactoryPrimary' defined in class path resource [com/taikang/client/base/config/PrimaryDataSourceConfiguration.class]: Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1694) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:573) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1087) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:857) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:548) ~[spring-context-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230) ~[spring-boot-2.0.6.RELEASE.jar:2.0.6.RELEASE]
+	at com.taikang.client.ClientApplication.main(ClientApplication.java:16) ~[classes/:na]
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: primaryPersistenceUnit] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:402) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:377) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:341) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1753) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1690) ~[spring-beans-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	... 16 common frames omitted
+Caused by: org.hibernate.MappingException: Could not get constructor for org.hibernate.persister.entity.SingleTableEntityPersister
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:123) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:77) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.metamodel.internal.MetamodelImpl.initialize(MetamodelImpl.java:129) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:300) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:462) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:892) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:57) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:390) ~[spring-orm-5.0.10.RELEASE.jar:5.0.10.RELEASE]
+	... 20 common frames omitted
+Caused by: org.hibernate.HibernateException: Unable to instantiate default tuplizer [org.hibernate.tuple.entity.PojoEntityTuplizer]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:91) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructDefaultTuplizer(EntityTuplizerFactory.java:116) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.EntityMetamodel.<init>(EntityMetamodel.java:382) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.entity.AbstractEntityPersister.<init>(AbstractEntityPersister.java:519) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.persister.entity.SingleTableEntityPersister.<init>(SingleTableEntityPersister.java:124) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at org.hibernate.persister.internal.PersisterFactoryImpl.createEntityPersister(PersisterFactoryImpl.java:96) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 28 common frames omitted
+Caused by: java.lang.reflect.InvocationTargetException: null
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490) ~[na:na]
+	at org.hibernate.tuple.entity.EntityTuplizerFactory.constructTuplizer(EntityTuplizerFactory.java:88) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 37 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at javassist.util.proxy.SecurityActions.setAccessible(SecurityActions.java:103) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass3(DefineClassHelper.java:151) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass2(DefineClassHelper.java:134) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.DefineClassHelper.toClass(DefineClassHelper.java:95) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.FactoryHelper.toClass(FactoryHelper.java:131) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass3(ProxyFactory.java:530) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass2(ProxyFactory.java:515) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass1(ProxyFactory.java:451) ~[javassist-3.22.0-GA.jar:na]
+	at javassist.util.proxy.ProxyFactory.createClass(ProxyFactory.java:422) ~[javassist-3.22.0-GA.jar:na]
+	at org.hibernate.proxy.pojo.javassist.JavassistProxyFactory.postInstantiate(JavassistProxyFactory.java:75) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.buildProxyFactory(PojoEntityTuplizer.java:162) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.<init>(AbstractEntityTuplizer.java:156) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.<init>(PojoEntityTuplizer.java:58) ~[hibernate-core-5.2.17.Final.jar:5.2.17.Final]
+	... 42 common frames omitted
+
+2018-12-05 14:27:36.286  INFO 11032 --- [main] com.taikang.client.ClientApplication     : The following profiles are active: dev
+2018-12-05 14:27:36.305  INFO 11032 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e: startup date [Wed Dec 05 14:27:36 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@14008db3
+2018-12-05 14:27:37.206  INFO 11032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:27:37.387  INFO 11032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:27:37.511  INFO 11032 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=myMvcConfig; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/taikang/client/base/config/MyMvcConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-12-05 14:27:37.619  INFO 11032 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:27:37.635  INFO 11032 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.taikang.client.base.dto.jpa.AuthorityPrimaryRepository.
+2018-12-05 14:27:38.052  INFO 11032 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=53899e05-85b2-3883-9fa1-5d110a958b77
+2018-12-05 14:27:38.078  INFO 11032 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'ssoTokenFilter' with a different definition: replacing [Generic bean: class [com.taikang.client.base.filter.SsoTokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [D:\development\works\client\target\classes\com\taikang\client\base\filter\SsoTokenFilter.class]] with [Root bean: class [org.springframework.boot.web.servlet.FilterRegistrationBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-12-05 14:27:38.087  INFO 11032 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:27:38.209  INFO 11032 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1617c84b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:27:38.263  INFO 11032 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$3231cb48] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:27:39.021  INFO 11032 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2018-12-05 14:27:39.068  INFO 11032 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-05 14:27:39.068  INFO 11032 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-12-05 14:27:39.086  INFO 11032 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2018-12-05 14:27:39.088  INFO 11032 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2018-12-05 14:27:39.088  INFO 11032 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2018-12-05 14:27:40.169  INFO 11032 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2018-12-05 14:27:40.608  INFO 11032 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-12-05 14:27:40.620  INFO 11032 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-05 14:27:40.621  INFO 11032 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4315 ms
+2018-12-05 14:27:40.684  INFO 11032 --- [localhost-startStop-1] s.c.a.AnnotationConfigApplicationContext : Refreshing FeignContext-sso: startup date [Wed Dec 05 14:27:40 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e
+2018-12-05 14:27:40.714  INFO 11032 --- [localhost-startStop-1] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:27:41.038  INFO 11032 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-05 14:27:41.039  INFO 11032 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-05 14:27:41.039  INFO 11032 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-05 14:27:41.039  INFO 11032 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-05 14:27:41.039  INFO 11032 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'ssoTokenFilter' to urls: [/api/*]
+2018-12-05 14:27:41.039  INFO 11032 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-05 14:27:41.311  INFO 11032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-05 14:27:41.497  INFO 11032 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-05 14:27:41.550  INFO 11032 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'primaryPersistenceUnit'
+2018-12-05 14:27:41.574  INFO 11032 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: primaryPersistenceUnit
+	...]
+2018-12-05 14:27:41.683  INFO 11032 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-12-05 14:27:41.685  INFO 11032 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-05 14:27:41.734  INFO 11032 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-12-05 14:27:41.896  INFO 11032 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-12-05 14:27:42.142  WARN 11032 --- [main] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2018-12-05 14:27:42.622  INFO 11032 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'primaryPersistenceUnit'
+2018-12-05 14:27:43.522  WARN 11032 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-05 14:27:43.622  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/add],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.Authority> com.taikang.client.base.rest.AuthorityController.add(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:27:43.624  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/list],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.util.List<com.taikang.sso.basic.po.Authority>> com.taikang.client.base.rest.AuthorityController.list(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:27:43.625  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/delete],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.AuthorityController.delete(java.lang.String)
+2018-12-05 14:27:43.626  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/detail],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.Authority> com.taikang.client.base.rest.AuthorityController.detail(java.lang.String)
+2018-12-05 14:27:43.626  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/resolvers],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.UserAuthorityToken> com.taikang.client.base.rest.AuthorityController.authorityTokenResolvers(java.lang.String)
+2018-12-05 14:27:43.627  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/check],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.AuthorityController.authorityTokenCheck(java.lang.String)
+2018-12-05 14:27:43.628  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/resolver],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.client.base.dto.UserAuthority> com.taikang.client.base.rest.AuthorityController.authorityTokenResolver(java.lang.String)
+2018-12-05 14:27:43.628  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/cancel],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.AuthorityController.authorityTokenCancel(java.lang.String)
+2018-12-05 14:27:43.629  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/generates],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.AuthorityController.tokenGenerates(java.lang.String)
+2018-12-05 14:27:43.629  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/edit],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.Authority> com.taikang.client.base.rest.AuthorityController.edit(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:27:43.630  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/generate],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.AuthorityController.tokenGenerate(java.lang.String)
+2018-12-05 14:27:43.632  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/sso/authority/token/check],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.Boolean> com.taikang.client.base.rest.AuthorityFromJarController.authorityTokenCheck(java.lang.String)
+2018-12-05 14:27:43.633  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/sso/authority/token/resolver],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.UserAuthorityToken> com.taikang.client.base.rest.AuthorityFromJarController.authorityTokenResolver(java.lang.String)
+2018-12-05 14:27:43.633  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/sso/authority/token/cancel],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.Boolean> com.taikang.client.base.rest.AuthorityFromJarController.authorityTokenCancel(java.lang.String)
+2018-12-05 14:27:43.634  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/sso/authority/token/generate],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.AuthorityFromJarController.tokenGenerate(java.lang.String)
+2018-12-05 14:27:43.637  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index],methods=[GET]}" onto public java.lang.String com.taikang.client.base.rest.IndexController.test()
+2018-12-05 14:27:43.640  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/client/resolver],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.LoginUser> com.taikang.client.base.rest.LoginController.resolver(java.lang.String)
+2018-12-05 14:27:43.641  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/client/checkToken],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.LoginController.checkToken(java.lang.String)
+2018-12-05 14:27:43.641  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/client/login],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.LoginController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-12-05 14:27:43.642  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/client/logout],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.LoginController.logout(java.lang.String)
+2018-12-05 14:27:43.643  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sso/resolver],methods=[POST],produces=[application/json;charset=UTF-8 || application/x-www-form-urlencoded]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.LoginUser> com.taikang.client.base.rest.LoginFromJarController.resolver(java.lang.String)
+2018-12-05 14:27:43.644  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sso/checkToken],methods=[POST],produces=[application/json;charset=UTF-8 || application/x-www-form-urlencoded]}" onto public com.taikang.result.basic.commons.Result<java.lang.Boolean> com.taikang.client.base.rest.LoginFromJarController.checkToken(java.lang.String)
+2018-12-05 14:27:43.644  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sso/login],methods=[POST],produces=[application/json;charset=UTF-8 || application/x-www-form-urlencoded]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.LoginFromJarController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-12-05 14:27:43.644  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sso/logout],methods=[POST],produces=[application/json;charset=UTF-8 || application/x-www-form-urlencoded]}" onto public com.taikang.result.basic.commons.Result<java.lang.Boolean> com.taikang.client.base.rest.LoginFromJarController.logout(java.lang.String)
+2018-12-05 14:27:43.647  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/detail],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.UserResult> com.taikang.client.base.rest.UserController.detail(java.lang.String)
+2018-12-05 14:27:43.648  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/add],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.User> com.taikang.client.base.rest.UserController.addUser(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:27:43.648  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/edit],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.User> com.taikang.client.base.rest.UserController.editUser(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:27:43.648  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/delete],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.User> com.taikang.client.base.rest.UserController.deleteUser(java.lang.String)
+2018-12-05 14:27:43.649  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/list],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.util.List<com.taikang.sso.basic.dto.UserResult>> com.taikang.client.base.rest.UserController.userList()
+2018-12-05 14:27:43.653  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2018-12-05 14:27:43.655  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2018-12-05 14:27:43.656  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2018-12-05 14:27:43.661  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-12-05 14:27:43.662  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-12-05 14:27:43.948  WARN 11032 --- [main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2018-12-05 14:27:44.190  INFO 11032 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2018-12-05 14:27:44.220  WARN 11032 --- [main] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2018-12-05 14:27:44.225  WARN 11032 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-12-05 14:27:44.226  INFO 11032 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-12-05 14:27:44.234  WARN 11032 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-12-05 14:27:44.234  INFO 11032 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-12-05 14:27:44.325  INFO 11032 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 14:27:44.536  INFO 11032 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2c5d601e: startup date [Wed Dec 05 14:27:36 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@14008db3
+2018-12-05 14:27:44.603  INFO 11032 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 14:27:44.604  INFO 11032 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 14:27:44.609  INFO 11032 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+2018-12-05 14:27:44.656  INFO 11032 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2018-12-05 14:27:44.979  WARN 11032 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates (please add some templates or check your Thymeleaf configuration)
+2018-12-05 14:27:45.623  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-12-05 14:27:45.625  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'primaryDataSource' has been autodetected for JMX exposure
+2018-12-05 14:27:45.633  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-12-05 14:27:45.635  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-12-05 14:27:45.635  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-12-05 14:27:45.639  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'primaryDataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=primaryDataSource,type=HikariDataSource]
+2018-12-05 14:27:45.641  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-12-05 14:27:45.657  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-12-05 14:27:45.684  INFO 11032 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=2c5d601e,type=ConfigurationPropertiesRebinder]
+2018-12-05 14:27:45.694  INFO 11032 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2018-12-05 14:27:45.695  INFO 11032 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2018-12-05 14:27:45.728  INFO 11032 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2018-12-05 14:27:45.759  INFO 11032 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2018-12-05 14:27:45.985  INFO 11032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: authorityTokenCancelUsingPOST_1
+2018-12-05 14:27:45.988  INFO 11032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: authorityTokenCheckUsingPOST_1
+2018-12-05 14:27:45.991  INFO 11032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: authorityTokenResolverUsingPOST_1
+2018-12-05 14:27:45.994  INFO 11032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: tokenGenerateUsingPOST_1
+2018-12-05 14:27:46.016  INFO 11032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: checkTokenUsingPOST_1
+2018-12-05 14:27:46.020  INFO 11032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2018-12-05 14:27:46.023  INFO 11032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: logoutUsingPOST_1
+2018-12-05 14:27:46.025  INFO 11032 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: resolverUsingPOST_1
+2018-12-05 14:27:46.114  INFO 11032 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2018-12-05 14:27:46.120  INFO 11032 --- [main] com.taikang.client.ClientApplication     : Started ClientApplication in 11.666 seconds (JVM running for 12.288)
+2018-12-05 14:28:40.436  INFO 13664 --- [main] com.taikang.client.ClientApplication     : The following profiles are active: dev
+2018-12-05 14:28:40.452  INFO 13664 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7fe083b1: startup date [Wed Dec 05 14:28:40 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@78a773fd
+2018-12-05 14:28:41.264  INFO 13664 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:28:41.460  INFO 13664 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:28:41.577  INFO 13664 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'mvcContentNegotiationManager' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=myMvcConfig; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/taikang/client/base/config/MyMvcConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration; factoryMethodName=mvcContentNegotiationManager; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]]
+2018-12-05 14:28:41.669  INFO 13664 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2018-12-05 14:28:41.683  INFO 13664 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.taikang.client.base.dto.jpa.AuthorityPrimaryRepository.
+2018-12-05 14:28:42.108  INFO 13664 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=53899e05-85b2-3883-9fa1-5d110a958b77
+2018-12-05 14:28:42.136  INFO 13664 --- [main] o.s.b.f.s.DefaultListableBeanFactory     : Overriding bean definition for bean 'ssoTokenFilter' with a different definition: replacing [Generic bean: class [com.taikang.client.base.filter.SsoTokenFilter]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [D:\development\works\client\target\classes\com\taikang\client\base\filter\SsoTokenFilter.class]] with [Root bean: class [org.springframework.boot.web.servlet.FilterRegistrationBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null]
+2018-12-05 14:28:42.144  INFO 13664 --- [main] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:28:42.257  INFO 13664 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cb80142c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:28:42.330  INFO 13664 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e79a1729] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-12-05 14:28:43.136  INFO 13664 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2018-12-05 14:28:43.179  INFO 13664 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-12-05 14:28:43.180  INFO 13664 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.34
+2018-12-05 14:28:43.194  INFO 13664 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : Loaded APR based Apache Tomcat Native library [1.2.17] using APR version [1.6.3].
+2018-12-05 14:28:43.196  INFO 13664 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true].
+2018-12-05 14:28:43.196  INFO 13664 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2018-12-05 14:28:44.307  INFO 13664 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : OpenSSL successfully initialized [OpenSSL 1.0.2o  27 Mar 2018]
+2018-12-05 14:28:44.768  INFO 13664 --- [localhost-startStop-1] org.apache.jasper.servlet.TldScanner     : At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2018-12-05 14:28:44.779  INFO 13664 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-12-05 14:28:44.779  INFO 13664 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4327 ms
+2018-12-05 14:28:44.842  INFO 13664 --- [localhost-startStop-1] s.c.a.AnnotationConfigApplicationContext : Refreshing FeignContext-sso: startup date [Wed Dec 05 14:28:44 CST 2018]; parent: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7fe083b1
+2018-12-05 14:28:44.871  INFO 13664 --- [localhost-startStop-1] f.a.AutowiredAnnotationBeanPostProcessor : JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2018-12-05 14:28:45.192  INFO 13664 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-12-05 14:28:45.193  INFO 13664 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-12-05 14:28:45.193  INFO 13664 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-12-05 14:28:45.193  INFO 13664 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2018-12-05 14:28:45.193  INFO 13664 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'ssoTokenFilter' to urls: [/api/*]
+2018-12-05 14:28:45.193  INFO 13664 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2018-12-05 14:28:45.495  INFO 13664 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-12-05 14:28:45.694  INFO 13664 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2018-12-05 14:28:45.744  INFO 13664 --- [main] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'primaryPersistenceUnit'
+2018-12-05 14:28:45.765  INFO 13664 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: primaryPersistenceUnit
+	...]
+2018-12-05 14:28:45.872  INFO 13664 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.2.17.Final}
+2018-12-05 14:28:45.874  INFO 13664 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2018-12-05 14:28:45.928  INFO 13664 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-12-05 14:28:46.102  INFO 13664 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2018-12-05 14:28:46.350  WARN 13664 --- [main] org.hibernate.id.UUIDHexGenerator        : HHH000409: Using org.hibernate.id.UUIDHexGenerator which does not generate IETF RFC 4122 compliant UUID values; consider using org.hibernate.id.UUIDGenerator instead
+2018-12-05 14:28:46.762  INFO 13664 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'primaryPersistenceUnit'
+2018-12-05 14:28:47.677  WARN 13664 --- [main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2018-12-05 14:28:47.793  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/add],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.Authority> com.taikang.client.base.rest.AuthorityController.add(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:28:47.795  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/list],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.util.List<com.taikang.sso.basic.po.Authority>> com.taikang.client.base.rest.AuthorityController.list(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:28:47.796  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/delete],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.AuthorityController.delete(java.lang.String)
+2018-12-05 14:28:47.797  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/detail],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.Authority> com.taikang.client.base.rest.AuthorityController.detail(java.lang.String)
+2018-12-05 14:28:47.798  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/generate],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.AuthorityController.tokenGenerate(java.lang.String)
+2018-12-05 14:28:47.799  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/edit],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.Authority> com.taikang.client.base.rest.AuthorityController.edit(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:28:47.799  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/generates],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.AuthorityController.tokenGenerates(java.lang.String)
+2018-12-05 14:28:47.800  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/cancel],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.AuthorityController.authorityTokenCancel(java.lang.String)
+2018-12-05 14:28:47.801  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/check],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.AuthorityController.authorityTokenCheck(java.lang.String)
+2018-12-05 14:28:47.801  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/resolvers],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.UserAuthorityToken> com.taikang.client.base.rest.AuthorityController.authorityTokenResolvers(java.lang.String)
+2018-12-05 14:28:47.802  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/authority/token/resolver],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.client.base.dto.UserAuthority> com.taikang.client.base.rest.AuthorityController.authorityTokenResolver(java.lang.String)
+2018-12-05 14:28:47.805  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/sso/authority/token/generate],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.AuthorityFromJarController.tokenGenerate(java.lang.String)
+2018-12-05 14:28:47.806  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/sso/authority/token/cancel],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.Boolean> com.taikang.client.base.rest.AuthorityFromJarController.authorityTokenCancel(java.lang.String)
+2018-12-05 14:28:47.807  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/sso/authority/token/check],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.Boolean> com.taikang.client.base.rest.AuthorityFromJarController.authorityTokenCheck(java.lang.String)
+2018-12-05 14:28:47.808  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/sso/authority/token/resolver],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.UserAuthorityToken> com.taikang.client.base.rest.AuthorityFromJarController.authorityTokenResolver(java.lang.String)
+2018-12-05 14:28:47.811  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/index],methods=[GET]}" onto public java.lang.String com.taikang.client.base.rest.IndexController.test()
+2018-12-05 14:28:47.816  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/client/resolver],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.LoginUser> com.taikang.client.base.rest.LoginController.resolver(java.lang.String)
+2018-12-05 14:28:47.817  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/client/checkToken],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.LoginController.checkToken(java.lang.String)
+2018-12-05 14:28:47.817  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/client/login],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.LoginController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-12-05 14:28:47.818  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/client/logout],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.lang.String> com.taikang.client.base.rest.LoginController.logout(java.lang.String)
+2018-12-05 14:28:47.820  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sso/resolver],methods=[POST],produces=[application/json;charset=UTF-8 || application/x-www-form-urlencoded]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.LoginUser> com.taikang.client.base.rest.LoginFromJarController.resolver(java.lang.String)
+2018-12-05 14:28:47.821  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sso/checkToken],methods=[POST],produces=[application/json;charset=UTF-8 || application/x-www-form-urlencoded]}" onto public com.taikang.result.basic.commons.Result<java.lang.Boolean> com.taikang.client.base.rest.LoginFromJarController.checkToken(java.lang.String)
+2018-12-05 14:28:47.822  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sso/login],methods=[POST],produces=[application/json;charset=UTF-8 || application/x-www-form-urlencoded]}" onto public com.taikang.result.basic.commons.Result<com.alibaba.fastjson.JSONObject> com.taikang.client.base.rest.LoginFromJarController.login(java.lang.String,java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-12-05 14:28:47.823  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/sso/logout],methods=[POST],produces=[application/json;charset=UTF-8 || application/x-www-form-urlencoded]}" onto public com.taikang.result.basic.commons.Result<java.lang.Boolean> com.taikang.client.base.rest.LoginFromJarController.logout(java.lang.String)
+2018-12-05 14:28:47.825  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/detail],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.dto.UserResult> com.taikang.client.base.rest.UserController.detail(java.lang.String)
+2018-12-05 14:28:47.826  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/add],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.User> com.taikang.client.base.rest.UserController.addUser(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:28:47.827  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/delete],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.User> com.taikang.client.base.rest.UserController.deleteUser(java.lang.String)
+2018-12-05 14:28:47.827  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/edit],methods=[POST],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<com.taikang.sso.basic.po.User> com.taikang.client.base.rest.UserController.editUser(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+2018-12-05 14:28:47.827  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/api/client/user/list],methods=[GET],produces=[application/json;charset=UTF-8]}" onto public com.taikang.result.basic.commons.Result<java.util.List<com.taikang.sso.basic.dto.UserResult>> com.taikang.client.base.rest.UserController.userList()
+2018-12-05 14:28:47.831  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/swagger-resources]}" onto public org.springframework.http.ResponseEntity<java.util.List<springfox.documentation.swagger.web.SwaggerResource>> springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2018-12-05 14:28:47.832  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/swagger-resources/configuration/ui]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.UiConfiguration> springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2018-12-05 14:28:47.833  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/swagger-resources/configuration/security]}" onto public org.springframework.http.ResponseEntity<springfox.documentation.swagger.web.SecurityConfiguration> springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2018-12-05 14:28:47.837  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-12-05 14:28:47.837  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-12-05 14:28:48.145  WARN 13664 --- [main] org.thymeleaf.templatemode.TemplateMode  : [THYMELEAF][main] Template Mode 'HTML5' is deprecated. Using Template Mode 'HTML' instead.
+2018-12-05 14:28:48.401  INFO 13664 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2018-12-05 14:28:48.437  WARN 13664 --- [main] o.s.c.n.a.ArchaiusAutoConfiguration      : No spring.application.name found, defaulting to 'application'
+2018-12-05 14:28:48.443  WARN 13664 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-12-05 14:28:48.443  INFO 13664 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-12-05 14:28:48.450  WARN 13664 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2018-12-05 14:28:48.450  INFO 13664 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2018-12-05 14:28:48.554  INFO 13664 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 14:28:48.744  INFO 13664 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7fe083b1: startup date [Wed Dec 05 14:28:40 CST 2018]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@78a773fd
+2018-12-05 14:28:48.814  INFO 13664 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 14:28:48.814  INFO 13664 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-12-05 14:28:48.819  INFO 13664 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler]
+2018-12-05 14:28:48.859  INFO 13664 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2018-12-05 14:28:49.196  WARN 13664 --- [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates (please add some templates or check your Thymeleaf configuration)
+2018-12-05 14:28:49.927  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2018-12-05 14:28:49.928  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'primaryDataSource' has been autodetected for JMX exposure
+2018-12-05 14:28:49.938  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'refreshScope' has been autodetected for JMX exposure
+2018-12-05 14:28:49.940  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2018-12-05 14:28:49.941  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Bean with name 'environmentManager' has been autodetected for JMX exposure
+2018-12-05 14:28:49.944  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located MBean 'primaryDataSource': registering with JMX server as MBean [com.zaxxer.hikari:name=primaryDataSource,type=HikariDataSource]
+2018-12-05 14:28:49.947  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2018-12-05 14:28:49.964  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2018-12-05 14:28:49.977  INFO 13664 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=7fe083b1,type=ConfigurationPropertiesRebinder]
+2018-12-05 14:28:49.993  INFO 13664 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2018-12-05 14:28:49.994  INFO 13664 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2018-12-05 14:28:50.024  INFO 13664 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2018-12-05 14:28:50.063  INFO 13664 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2018-12-05 14:28:50.308  INFO 13664 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: authorityTokenCancelUsingPOST_1
+2018-12-05 14:28:50.311  INFO 13664 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: authorityTokenCheckUsingPOST_1
+2018-12-05 14:28:50.314  INFO 13664 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: authorityTokenResolverUsingPOST_1
+2018-12-05 14:28:50.317  INFO 13664 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: tokenGenerateUsingPOST_1
+2018-12-05 14:28:50.338  INFO 13664 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: checkTokenUsingPOST_1
+2018-12-05 14:28:50.341  INFO 13664 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: loginUsingPOST_1
+2018-12-05 14:28:50.343  INFO 13664 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: logoutUsingPOST_1
+2018-12-05 14:28:50.345  INFO 13664 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: resolverUsingPOST_1
+2018-12-05 14:28:50.464  INFO 13664 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2018-12-05 14:28:50.470  INFO 13664 --- [main] com.taikang.client.ClientApplication     : Started ClientApplication in 11.895 seconds (JVM running for 12.586)

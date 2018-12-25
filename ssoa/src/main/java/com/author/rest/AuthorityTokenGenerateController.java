@@ -2,6 +2,7 @@ package com.author.rest;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,12 +68,47 @@ public class AuthorityTokenGenerateController extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("调用/basic/authority/token/generate");
 		
-		String token = request.getParameter("token");
-		System.out.println("token:" + token);
-		
 		response.setContentType("application/json;charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
 	    PrintWriter out = response.getWriter();
+		
+		String token = request.getParameter("token");
+		String subordinateSystem = request.getParameter("subordinateSystem");
+		String subordinateApp = request.getParameter("subordinateApp");
+		String subordinateModule = request.getParameter("subordinateModule");
+		String channel = request.getParameter("channel");
+		if (null == token && null == subordinateSystem && null == subordinateApp && null == subordinateModule && null == channel) {
+			Enumeration<String> names = request.getParameterNames();
+			if (!names.hasMoreElements()) {
+				out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
+			    out.flush();
+			    out.close();
+			    return;
+			}
+			String element = names.nextElement();
+			JSONObject object = JSON.parseObject(element);
+			
+			if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
+				token = object.getString("token");
+			}
+			
+			if (StringUtils.isEmptyOrWhitespaceOnly(subordinateSystem)) {
+				subordinateSystem = object.getString("subordinateSystem");
+			}
+			
+			if (StringUtils.isEmptyOrWhitespaceOnly(subordinateApp)) {
+				subordinateApp = object.getString("subordinateApp");
+			}
+			
+			if (StringUtils.isEmptyOrWhitespaceOnly(subordinateModule)) {
+				subordinateModule = object.getString("subordinateModule");
+			}
+			
+			if (StringUtils.isEmptyOrWhitespaceOnly(channel)) {
+				channel = object.getString("channel");
+			}
+		}
+		
 		if (StringUtils.isEmptyOrWhitespaceOnly(token)) {
 			out.println(ResultUtils.success(ResultEnum.TOKEN_NULL_ERROR));
 		    out.flush();
@@ -80,7 +116,7 @@ public class AuthorityTokenGenerateController extends HttpServlet {
 		    return;
 		}
 		
-		Result<JSONObject> result = loginService.authorityToken(token);
+		Result<JSONObject> result = loginService.authorityToken(token, subordinateSystem, subordinateApp, subordinateModule, channel);
 	    out.println(JSON.toJSONString(result));
 	    out.flush();
 	    out.close();
